@@ -1,0 +1,31 @@
+File Structure
+Trambo
+-Assets
+-Docs
+-Include: location of headers
+-Lib: location of libs
+-Source
+--Trambo
+---Trambo
+----Source: location of cpp files
+-Temp: location of intermediate files for all builds
+
+Project Setup
+1. FILE -> New Project...
+2. Installed -> Templates -> Visual C++ -> Win32
+3. Win32 Project
+4. Name and Solution Name
+5. (checked) Create directory for solution
+6. Verify Location + Ok
+7. Win32 Application Wizard + Next
+8. Application type: (check) Static library
+9. Additional options: (uncheck) Precompiled header + Finish
+
+Project Congiguration
+1. PROJECT -> Trambo Properties...
+2. All COnfigurations - Output Directory: $(SolutionDir)..\..\Lib\
+3. All COnfigurations - Intermediate Directory: $(SolutionDir)..\..\Temp\$(Configuration)\
+4. Target Name:
+   A. Debug - $(ProjectName)-d
+   B. Release - $(ProjectName)
+

@@ -1,0 +1,26 @@
+GitHub Setup
+1. Go to: https://github.com and log in
+2. Go to: https://github.com/Kanefa
+3. Click Repositories
+4. Click New
+5. Enter Repository name: Trambo and Description: SFML Engine
+6. Click Create repository
+7. Go to: https://github.com/Kanefa/Trambo
+8. Copy https://github.com/Kanefa/Trambo.git into clipboard
+
+Local Setup
+1. Run Git GUI
+2. Create New Repository
+3. Specify path to empty directory
+4. Add files outside of Git GUI
+5. Stage Changes (click on file icon of the unstaged files)
+6. Add comment and commit
+7. Remote -> Add...
+8. Name: Trambo
+9. Location: paste contents of clipboard https://github.com/Kanefa/Trambo.git
+10. Select Do Nothing Else Now
+11. Click Add
+12. Remote -> Push...
+13. Click Push
+14. Enter GitHub username
+15. Enter GitHub pasword
