@@ -6,8 +6,7 @@ Trambo
 -Lib: location of libs
 -Source
 --Trambo
----Trambo
-----Source: location of cpp files
+---Trambo: location of cpp files
 -Temp: location of intermediate files for all builds
 
 Project Setup
@@ -21,11 +20,14 @@ Project Setup
 8. Application type: (check) Static library
 9. Additional options: (uncheck) Precompiled header + Finish
 
-Project Congiguration
-1. PROJECT -> Trambo Properties...
-2. All COnfigurations - Output Directory: $(SolutionDir)..\..\Lib\
-3. All COnfigurations - Intermediate Directory: $(SolutionDir)..\..\Temp\$(Configuration)\
-4. Target Name:
-   A. Debug - $(ProjectName)-d
-   B. Release - $(ProjectName)
+Project Configuration
+1. Project Properties -> Configuration Properties -> General -> Output Directory
+   (Debug) $(SolutionDir)..\..\Lib\DebugWin32VS2012\
+   (Release) $(SolutionDir)..\..\Lib\ReleaseWin32VS2012\
+2. Project Properties -> Configuration Properties -> General -> Intermediate Directory
+   (Debug) $(SolutionDir)..\..\Temp\DebugWin32VS2012\
+   (Release) $(SolutionDir)..\..\Temp\ReleaseWin32VS2012\
+3. Project Properties -> Configuration Properties -> General -> Target Name:
+   (Debug) $(ProjectName)-d
+   (Release) $(ProjectName)
 
