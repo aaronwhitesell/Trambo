@@ -2,12 +2,10 @@ File Structure
 Trambo
 -Assets
 -Docs
--Include: location of headers
--Lib: location of libs
--Source
---Trambo
----Trambo: location of cpp files
--Temp: location of intermediate files for all builds
+-Include
+-Lib: location of output files
+-Source\Trambo\Trambo: location of cpp files
+-Temp: location of intermediate files
 
 Project Setup
 1. FILE -> New Project...

@@ -1,0 +1,10 @@
+Add Trambo to Your Project
+1. Project Properties -> Configuration Properties -> C++ -> Additional Include Directories
+   (All Configurations) Tell the compiler where to find the Trambo headers
+2. Project Properties -> Configuration Properties -> Linker -> Additional Library Directories
+   (Debug) Tell the compiler where to find the debug Trambo library
+   (Release) Tell the compiler where to find the release Trambo library
+3. Project Properties -> Configuration Properties -> Linker -> Input -> Additional Depedencies
+   Link your application to the Trambo libraries
+   (Debug) Trambo-d.lib
+   (Release) Trambo.lib

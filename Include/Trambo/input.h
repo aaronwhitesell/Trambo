@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef TRAMBO_INPUT_H
+#define TRAMBO_INPUT_H
 
 namespace trmb
 {

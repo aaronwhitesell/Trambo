@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\input.h" />
+    <ClCompile Include="Input\input.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Input\input.cpp" />
+    <ClInclude Include="..\..\..\Include\Trambo\input.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5D393697-6398-4190-BCD7-006E9D6C1638}</ProjectGuid>
