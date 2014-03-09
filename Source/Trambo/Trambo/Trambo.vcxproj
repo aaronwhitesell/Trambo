@@ -11,9 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Events\event.cpp" />
+    <ClCompile Include="Events\eventDispatcher.cpp" />
+    <ClCompile Include="Events\eventHandler.cpp" />
     <ClCompile Include="Input\input.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Trambo\Events\event.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
