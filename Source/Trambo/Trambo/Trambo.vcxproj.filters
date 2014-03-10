@@ -18,6 +18,24 @@
     <Filter Include="Source Files\Events">
       <UniqueIdentifier>{6f0484d7-cffa-4498-914e-c087f8361126}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tiles">
+      <UniqueIdentifier>{79666f1a-bbb8-444f-87a9-a0ee06ddeb46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tiles">
+      <UniqueIdentifier>{bc871761-3d3c-41f6-9b36-ed955b329ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3rdParty">
+      <UniqueIdentifier>{4df689a3-d102-4473-b02a-b692181c848d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3rdParty">
+      <UniqueIdentifier>{9f0226e5-17bd-484d-a96e-79f8f19f0b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3rdParty\TinyXML2">
+      <UniqueIdentifier>{772092bd-8fba-4363-8fce-2aa66f708dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3rdParty\TinyXML2">
+      <UniqueIdentifier>{9da38600-3e60-4f58-ac77-f9852422c20c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input\input.cpp">
@@ -32,6 +50,18 @@
     <ClCompile Include="Events\eventHandler.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Tiles\tileset.cpp">
+      <Filter>Source Files\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Tiles\layer.cpp">
+      <Filter>Source Files\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Tiles\map.cpp">
+      <Filter>Source Files\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdParty\TinyXML2\tinyxml2.cpp">
+      <Filter>Source Files\3rdParty\TinyXML2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\input.h">
@@ -45,6 +75,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Tiles\tileset.h">
+      <Filter>Header Files\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Tiles\layer.h">
+      <Filter>Header Files\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Tiles\map.h">
+      <Filter>Header Files\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdParty\TinyXML2\tinyxml2.h">
+      <Filter>Header Files\3rdParty\TinyXML2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
