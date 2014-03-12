@@ -36,6 +36,9 @@
     <Filter Include="Header Files\3rdParty\TinyXML2">
       <UniqueIdentifier>{9da38600-3e60-4f58-ac77-f9852422c20c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Resources">
+      <UniqueIdentifier>{3c9f3b25-463f-4ee8-8c6c-ac5295bcb284}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input\input.cpp">
@@ -91,5 +94,13 @@
     <ClInclude Include="..\..\3rdParty\TinyXML2\tinyxml2.h">
       <Filter>Header Files\3rdParty\TinyXML2</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Include\Trambo\Resources\resourceHolder.inl">
+      <Filter>Header Files\Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>

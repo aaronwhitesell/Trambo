@@ -25,11 +25,15 @@
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Tiles\layer.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Tiles\map.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Tiles\tileset.h" />
     <ClInclude Include="..\..\..\Include\Trambo\types.h" />
     <ClInclude Include="..\..\3rdParty\TinyXML2\tinyxml2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Include\Trambo\Resources\resourceHolder.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5D393697-6398-4190-BCD7-006E9D6C1638}</ProjectGuid>
