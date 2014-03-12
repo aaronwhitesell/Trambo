@@ -1,4 +1,4 @@
-#ifndef TRAMBO_EVENTs_H
+#ifndef TRAMBO_EVENTS_H
 #define TRAMBO_EVENTS_H
 
 #include "Trambo/Events/event.h"
