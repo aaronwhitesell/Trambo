@@ -29,3 +29,7 @@ Project Configuration
    (Debug) $(ProjectName)-d
    (Release) $(ProjectName)
 
+SFML Configuration
+NOTE: Never link a static library to another static library.  Simply #include SFML.  All static libraries are linked in the final application and the symbols will be resolved then.
+1. Project Properties -> Configuration Properties -> C++ -> Additional Include Directories
+   (All Configurations) $(SolutionDir)..\3rdParty\SFML-2.1\include
