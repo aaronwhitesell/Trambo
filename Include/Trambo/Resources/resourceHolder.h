@@ -50,25 +50,25 @@ namespace sf
 namespace Textures
 {
 	// Forward declares for TextureHolder
-	enum ID : int;
+	enum ID : unsigned int;
 }
 
 namespace Fonts
 {
 	// Forward declares for FontHolder
-	enum ID : int;
+	enum ID : unsigned int;
 }
 
 namespace Shaders
 {
 	// Forward declares for ShaderHolder
-	enum ID : int;
+	enum ID : unsigned int;
 }
 
 namespace SoundEffect
 {
 	// Forward declares for SoundBufferHolder
-	enum ID : int;
+	enum ID : unsigned int;
 }
 
 namespace trmb

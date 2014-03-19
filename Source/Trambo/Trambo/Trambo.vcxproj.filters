@@ -39,6 +39,12 @@
     <Filter Include="Header Files\Resources">
       <UniqueIdentifier>{3c9f3b25-463f-4ee8-8c6c-ac5295bcb284}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{662b44bc-a593-4bbf-a143-949dc34cae4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{c2d97fc0-d6be-4ad0-8de9-5ad0ad2625b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input\input.cpp">
@@ -64,6 +70,12 @@
     </ClCompile>
     <ClCompile Include="..\..\3rdParty\TinyXML2\tinyxml2.cpp">
       <Filter>Source Files\3rdParty\TinyXML2</Filter>
+    </ClCompile>
+    <ClCompile Include="States\state.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\stateStack.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h">
       <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\States\state.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\States\stateStack.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
