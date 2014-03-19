@@ -1,6 +1,8 @@
 #include "../../../../Include/Trambo/Tiles/layer.h"
 
-using namespace trmb;
+
+namespace trmb
+{
 
 Layer::Layer(std::string name, uint width, uint height, std::vector<uint> tiles)
 : mName(name)
@@ -9,3 +11,5 @@ Layer::Layer(std::string name, uint width, uint height, std::vector<uint> tiles)
 , mTiles(tiles)
 {
 }
+
+} // namespace trmb

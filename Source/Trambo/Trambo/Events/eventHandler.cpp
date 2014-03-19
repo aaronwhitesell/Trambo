@@ -2,7 +2,8 @@
 #include "../../../../Include/Trambo/Events/eventDispatcher.h"
 
 
-using namespace trmb;
+namespace trmb
+{
 
 EventHandler::EventHandler() 
 {
@@ -13,3 +14,5 @@ void EventHandler::sendEvent(const Event& event) const
 {
 	EventDispatcher::getInstance().sendEvent(event);
 }
+
+} // namespace trmb

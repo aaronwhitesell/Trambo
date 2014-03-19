@@ -2,7 +2,8 @@
 #include "../../../../Include/Trambo/States/stateStack.h"
 
 
-using namespace trmb;
+namespace trmb
+{
 
 State::Context::Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, Player& player, MusicPlayer& music, SoundPlayer& sounds)
 : window(&window)
@@ -43,3 +44,5 @@ State::Context State::getContext() const
 {
 	return mContext;
 }
+
+} // namespace trmb

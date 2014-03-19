@@ -1,7 +1,9 @@
 #include "../../../../Include/Trambo/Events/eventDispatcher.h"
 #include "../../../../Include/Trambo/Events/eventHandler.h"
 
-using namespace trmb;
+
+namespace trmb
+{
 
 EventDispatcher::EventDispatcher() 
 {
@@ -23,3 +25,5 @@ void EventDispatcher::sendEvent(const Event& event) const
 	for (EventHandler* listener : mListenerList)
 		listener->handleEvent(event);
 }
+
+} // namespace trmb

@@ -2,7 +2,9 @@
 
 #include <cassert>
 
-using namespace trmb;
+
+namespace trmb
+{
 
 void trmb::Map::read(const std::string& filename)
 {
@@ -82,3 +84,5 @@ void trmb::Map::readLayers(tinyxml2::XMLDocument& config)
 		mLayers.push_back(Layer(name, width, height, tiles));
 	}
 }
+
+} // namespace trmb

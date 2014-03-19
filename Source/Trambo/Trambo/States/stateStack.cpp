@@ -5,7 +5,8 @@
 #include <cassert>
 
 
-using namespace trmb;
+namespace trmb
+{
 
 StateStack::StateStack(State::Context context)
 : mStack()
@@ -102,3 +103,5 @@ StateStack::PendingChange::PendingChange(Action action, States::ID stateID)
 , stateID(stateID)
 {
 }
+
+} // namespace trmb

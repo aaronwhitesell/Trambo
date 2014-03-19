@@ -3,7 +3,9 @@
 #include <cassert>
 #include <math.h>
 
-using namespace trmb;
+
+namespace trmb
+{
 
 Tileset::Tileset(std::string name, std::string source, uint width, uint height, uint tileWidth, uint tileHeight, uint firstGid)
 : mName(name)
@@ -22,3 +24,5 @@ Tileset::Tileset(std::string name, std::string source, uint width, uint height, 
 	mWidthInTiles = static_cast<uint>(widthInTiles);
 	mLastGid = mWidthInTiles * static_cast<uint>(heightInTiles) + mFirstGid - 1;
 }
+
+} // namespace trmb

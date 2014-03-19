@@ -1,7 +1,8 @@
 #include "../../../../Include/Trambo/Events/event.h"
 
 
-using namespace trmb;
+namespace trmb
+{
 
 Event::Event(EventType type)
 : mType(type)
@@ -17,6 +18,7 @@ Event::EventType Event::getType() const
 	return mType;
 }
 
+} // namespace trmb
 
 // Example of a derived class of Event.
 /*
