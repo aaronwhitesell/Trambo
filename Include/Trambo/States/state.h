@@ -19,7 +19,7 @@ class SoundPlayer;
 
 namespace States
 {
-	enum ID : unsigned int;
+	enum class ID;
 }
 
 namespace trmb

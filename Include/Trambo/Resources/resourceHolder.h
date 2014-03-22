@@ -40,7 +40,6 @@ private:
 // Define the most common types of resource holders
 namespace sf
 {
-	// Forward declares for resource holders
 	class Texture;
 	class Font;
 	class Shader;
@@ -49,38 +48,33 @@ namespace sf
 
 namespace Textures
 {
-	// Forward declares for TextureHolder
-	enum ID : unsigned int;
+	enum class ID;
 }
 
 namespace Fonts
 {
-	// Forward declares for FontHolder
-	enum ID : unsigned int;
+	enum class ID;
 }
 
 namespace Shaders
 {
-	// Forward declares for ShaderHolder
-	enum ID : unsigned int;
+	enum class ID;
 }
 
-namespace SoundEffect
+namespace SoundEffects
 {
-	// Forward declares for SoundBufferHolder
-	enum ID : unsigned int;
+	enum class ID;
 }
 
 namespace trmb
 {
-	// Forward declares for resource holders
 	template <typename Resource, typename Identifier>
 	class ResourceHolder;
 
 	typedef ResourceHolder<sf::Texture, Textures::ID>			TextureHolder;
 	typedef ResourceHolder<sf::Font, Fonts::ID>					FontHolder;
 	typedef ResourceHolder<sf::Shader, Shaders::ID>				ShaderHolder;
-	typedef ResourceHolder<sf::SoundBuffer, SoundEffect::ID>	SoundBufferHolder;
+	typedef ResourceHolder<sf::SoundBuffer, SoundEffects::ID>	SoundBufferHolder;
 }
 
 #endif

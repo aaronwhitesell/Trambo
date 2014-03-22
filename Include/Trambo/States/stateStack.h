@@ -18,7 +18,7 @@ namespace sf
 
 namespace States
 {
-	enum ID : unsigned int;
+	enum class ID;
 }
 
 namespace trmb
@@ -27,7 +27,7 @@ namespace trmb
 class StateStack : private sf::NonCopyable
 {
 public:
-	enum Action
+	enum class Action
 	{
 		Push,
 		Pop,
@@ -60,10 +60,10 @@ private:
 private:
 	struct PendingChange
 	{
-		explicit			PendingChange(Action action, States::ID stateID = static_cast<States::ID>(0));   // ALW - substitute '0' for States::None (defined in game)
+		explicit			PendingChange(Action action, States::ID stateID = static_cast<States::ID>(0));   // ALW - substitute '0' for States::ID::None (defined in game)
 
 		Action				action;
-		States::ID			stateID;
+		States::ID				stateID;
 	};
 
 
