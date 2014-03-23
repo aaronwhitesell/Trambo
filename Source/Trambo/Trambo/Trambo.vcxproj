@@ -16,6 +16,8 @@
     <ClCompile Include="Events\eventDispatcher.cpp" />
     <ClCompile Include="Events\eventHandler.cpp" />
     <ClCompile Include="Input\input.cpp" />
+    <ClCompile Include="Sounds\musicPlayer.cpp" />
+    <ClCompile Include="Sounds\soundPlayer.cpp" />
     <ClCompile Include="States\state.cpp" />
     <ClCompile Include="States\stateStack.cpp" />
     <ClCompile Include="Tiles\layer.cpp" />
@@ -28,6 +30,8 @@
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Sounds\soundPlayer.h" />
     <ClInclude Include="..\..\..\Include\Trambo\States\state.h" />
     <ClInclude Include="..\..\..\Include\Trambo\States\stateStack.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Tiles\layer.h" />

@@ -13,9 +13,7 @@ namespace sf
 	class Time;
 }
 
-class MusicPlayer;
 class Player;
-class SoundPlayer;
 
 namespace States
 {
@@ -25,6 +23,8 @@ namespace States
 namespace trmb
 {
 
+class MusicPlayer;
+class SoundPlayer;
 class StateStack;
 
 class State

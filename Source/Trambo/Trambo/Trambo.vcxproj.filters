@@ -45,6 +45,12 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{c2d97fc0-d6be-4ad0-8de9-5ad0ad2625b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Sounds">
+      <UniqueIdentifier>{1e5b2547-2628-4cac-81ae-b57b72c50041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sounds">
+      <UniqueIdentifier>{a7042168-0ee8-43df-9125-3a0d55bd24aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input\input.cpp">
@@ -76,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="States\stateStack.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sounds\musicPlayer.cpp">
+      <Filter>Source Files\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Sounds\soundPlayer.cpp">
+      <Filter>Source Files\Sounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +126,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\States\stateStack.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h">
+      <Filter>Header Files\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Sounds\soundPlayer.h">
+      <Filter>Header Files\Sounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
