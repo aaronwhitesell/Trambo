@@ -171,7 +171,7 @@ void centerOrigin(sf::Text& text)
 	text.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
 }
 
-void centerOrigin(trmb::Animation& animation)
+void centerOrigin(Animation& animation)
 {
 	sf::FloatRect bounds = animation.getLocalBounds();
 	animation.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));

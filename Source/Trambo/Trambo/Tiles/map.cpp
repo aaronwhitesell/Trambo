@@ -6,7 +6,7 @@
 namespace trmb
 {
 
-void trmb::Map::read(const std::string& filename)
+void Map::read(const std::string& filename)
 {
 	tinyxml2::XMLDocument config;
 	loadFile(filename, config);
@@ -15,7 +15,7 @@ void trmb::Map::read(const std::string& filename)
 	readLayers(config);
 }
 
-void trmb::Map::loadFile(const std::string& filename, tinyxml2::XMLDocument& config)
+void Map::loadFile(const std::string& filename, tinyxml2::XMLDocument& config)
 {
 	if (config.LoadFile(filename.c_str()) != tinyxml2::XML_NO_ERROR)
 	{
@@ -23,7 +23,7 @@ void trmb::Map::loadFile(const std::string& filename, tinyxml2::XMLDocument& con
 	}
 }
 
-void trmb::Map::readMap(tinyxml2::XMLDocument& config)
+void Map::readMap(tinyxml2::XMLDocument& config)
 {
 	tinyxml2::XMLElement* map = config.FirstChildElement("map");
 	if (!map)
@@ -38,7 +38,7 @@ void trmb::Map::readMap(tinyxml2::XMLDocument& config)
 	mTileHeight = map->IntAttribute("tileheight");
 }
 
-void trmb::Map::readTilesets(tinyxml2::XMLDocument& config)
+void Map::readTilesets(tinyxml2::XMLDocument& config)
 {
 	tinyxml2::XMLElement* tileset = config.FirstChildElement("map")->FirstChildElement("tileset");
 	if (!tileset)
@@ -61,7 +61,7 @@ void trmb::Map::readTilesets(tinyxml2::XMLDocument& config)
 	}
 }
 
-void trmb::Map::readLayers(tinyxml2::XMLDocument& config)
+void Map::readLayers(tinyxml2::XMLDocument& config)
 {
 	tinyxml2::XMLElement* layer = config.FirstChildElement("map")->FirstChildElement("layer");
 	if (!layer)
