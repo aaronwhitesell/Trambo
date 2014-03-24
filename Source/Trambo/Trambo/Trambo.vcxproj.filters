@@ -57,6 +57,12 @@
     <Filter Include="Source Files\Animations">
       <UniqueIdentifier>{cd8ac082-3f78-4e60-9293-47929fa09c9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{682f30eb-77b7-4c95-91ab-165f4af22dd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{31c680f5-f893-42ab-a111-4cf3623e8d39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input\input.cpp">
@@ -97,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Animations\animation.cpp">
       <Filter>Source Files\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\utility.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Animations\animation.h">
       <Filter>Header Files\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Utilities\utility.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
