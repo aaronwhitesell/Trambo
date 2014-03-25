@@ -16,6 +16,10 @@
     <ClCompile Include="Events\event.cpp" />
     <ClCompile Include="Events\eventDispatcher.cpp" />
     <ClCompile Include="Events\eventHandler.cpp" />
+    <ClCompile Include="GUI\button.cpp" />
+    <ClCompile Include="GUI\component.cpp" />
+    <ClCompile Include="GUI\container.cpp" />
+    <ClCompile Include="GUI\label.cpp" />
     <ClCompile Include="Input\input.cpp" />
     <ClCompile Include="Sounds\musicPlayer.cpp" />
     <ClCompile Include="Sounds\soundPlayer.cpp" />
@@ -31,6 +35,10 @@
     <ClInclude Include="..\..\..\Include\Trambo\Events\event.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\GUI\button.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\GUI\component.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\GUI\container.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\GUI\label.h" />
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h" />
