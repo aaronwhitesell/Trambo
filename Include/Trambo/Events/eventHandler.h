@@ -1,6 +1,7 @@
 #ifndef TRAMBO_EVENTHANDLER_H
 #define TRAMBO_EVENTHANDLER_H
 
+
 namespace trmb
 {
 
@@ -10,6 +11,8 @@ class EventHandler
 {
 public:
 							EventHandler();
+	virtual					~EventHandler();
+
 
 	virtual void			handleEvent(const Event& event) = 0;
 

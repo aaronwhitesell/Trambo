@@ -15,6 +15,8 @@ class EventDispatcher
 public:
 	static EventDispatcher&		getInstance();
 	void						registerListener(EventHandler* listener);
+	void						unregisterListener(EventHandler const * listener);
+
 	void						sendEvent(const Event& event) const;		// Sends event to all the registered listeners
 
 
@@ -25,7 +27,7 @@ private:
 
 
 private:
-	std::vector<EventHandler*> mListenerList; // Component types of STL containers must be assignable (references are not)
+	std::vector<EventHandler*> mListeners; // Component types of STL containers must be assignable (references are not)
 };
 
 } // namespace trmb

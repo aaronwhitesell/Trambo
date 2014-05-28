@@ -5,9 +5,14 @@
 namespace trmb
 {
 
-EventHandler::EventHandler() 
+EventHandler::EventHandler()
 {
 	EventDispatcher::getInstance().registerListener(this);
+}
+
+EventHandler::~EventHandler()
+{
+	EventDispatcher::getInstance().unregisterListener(this);
 }
 
 void EventHandler::sendEvent(const Event& event) const
