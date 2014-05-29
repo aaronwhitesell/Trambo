@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Source Files\Input">
-      <UniqueIdentifier>{11914873-3052-4af5-9fc9-52dd377dcda0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{5482afb7-1885-4ad3-93d2-6afe24dc8b45}</UniqueIdentifier>
     </Filter>
@@ -69,11 +66,20 @@
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{f00feba1-a172-4cf4-b7aa-e2ade4352f1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Inputs">
+      <UniqueIdentifier>{232f053a-47bb-4f5a-873c-ed0afdcd97ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inputs">
+      <UniqueIdentifier>{2d9b7e0f-f425-4651-bd32-fbbf227b2dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Inputs\Buttons">
+      <UniqueIdentifier>{a707e203-9701-41e1-95be-b998d8627b6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inputs\Buttons">
+      <UniqueIdentifier>{2d45e5e4-a2b2-4426-bc0c-8ab969351d3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Input\input.cpp">
-      <Filter>Source Files\Input</Filter>
-    </ClCompile>
     <ClCompile Include="Events\event.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
@@ -124,6 +130,15 @@
     </ClCompile>
     <ClCompile Include="GUI\label.cpp">
       <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\actionBinding.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\keyboardKeyAsButton.cpp">
+      <Filter>Source Files\Inputs\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\action.cpp">
+      <Filter>Source Files\Inputs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +201,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\GUI\label.h">
       <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\keyboardKeyAsButton.h">
+      <Filter>Header Files\Inputs\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h">
+      <Filter>Header Files\Inputs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

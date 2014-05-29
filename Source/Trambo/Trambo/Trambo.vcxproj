@@ -20,7 +20,9 @@
     <ClCompile Include="GUI\component.cpp" />
     <ClCompile Include="GUI\container.cpp" />
     <ClCompile Include="GUI\label.cpp" />
-    <ClCompile Include="Input\input.cpp" />
+    <ClCompile Include="Inputs\action.cpp" />
+    <ClCompile Include="Inputs\actionBinding.cpp" />
+    <ClCompile Include="Inputs\keyboardKeyAsButton.cpp" />
     <ClCompile Include="Sounds\musicPlayer.cpp" />
     <ClCompile Include="Sounds\soundPlayer.cpp" />
     <ClCompile Include="States\state.cpp" />
@@ -40,6 +42,9 @@
     <ClInclude Include="..\..\..\Include\Trambo\GUI\container.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\label.h" />
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\keyboardKeyAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\soundPlayer.h" />
