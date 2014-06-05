@@ -23,6 +23,7 @@
     <ClCompile Include="Inputs\action.cpp" />
     <ClCompile Include="Inputs\actionBinding.cpp" />
     <ClCompile Include="Inputs\keyboardKeyAsButton.cpp" />
+    <ClCompile Include="Inputs\mouseButtonAsButton.cpp" />
     <ClCompile Include="Sounds\musicPlayer.cpp" />
     <ClCompile Include="Sounds\soundPlayer.cpp" />
     <ClCompile Include="States\state.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\keyboardKeyAsButton.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\mouseButtonAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\soundPlayer.h" />

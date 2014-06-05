@@ -140,6 +140,9 @@
     <ClCompile Include="Inputs\action.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
+    <ClCompile Include="Inputs\mouseButtonAsButton.cpp">
+      <Filter>Source Files\Inputs\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\input.h">
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h">
       <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\mouseButtonAsButton.h">
+      <Filter>Header Files\Inputs\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
