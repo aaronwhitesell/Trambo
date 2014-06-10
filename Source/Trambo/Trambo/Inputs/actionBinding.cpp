@@ -18,6 +18,16 @@ void ActionBinding::update()
 	{
 		element.first.update(element.second);
 	}
+
+	for (auto& element : mJoystickButtonsAsButtonBindings)
+	{
+		element.first.update(element.second);
+	}
+
+	for (auto& element : mJoystickAxesAsButtonBindings)
+	{
+		element.first.update(element.second);
+	}
 }
 
 void ActionBinding::handleEvent(const sf::Event& inputEvent)
@@ -28,6 +38,16 @@ void ActionBinding::handleEvent(const sf::Event& inputEvent)
 	}
 
 	for (auto& element : mMouseButtonsAsButtonBindings)
+	{
+		element.first.handleEvent(inputEvent, element.second);
+	}
+
+	for (auto& element : mJoystickButtonsAsButtonBindings)
+	{
+		element.first.handleEvent(inputEvent, element.second);
+	}
+
+	for (auto& element : mJoystickAxesAsButtonBindings)
 	{
 		element.first.handleEvent(inputEvent, element.second);
 	}
@@ -62,6 +82,8 @@ void ActionBinding::assignKeyboardKeyAsButtonBinding(const KeyboardKeyAsButton& 
 	// ALW - Remove duplicate actions
 	removeDuplicateActionsInKeyboardKeysAsButtonBindings(eventGuid);
 	removeDuplicateActionsInMouseButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickAxesAsButtonBindings(eventGuid);
 
 	// ALW - Push new element binding onto vector
 	mKeyboardKeysAsButtonBindings.emplace_back(KeyboardKeyAsButton(keyboardKeyAsButton), getWeakPtrToAction(eventGuid));
@@ -81,9 +103,55 @@ void ActionBinding::assignMouseButtonAsButtonBinding(const MouseButtonAsButton& 
 	// ALW - Remove duplicate actions
 	removeDuplicateActionsInKeyboardKeysAsButtonBindings(eventGuid);
 	removeDuplicateActionsInMouseButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickAxesAsButtonBindings(eventGuid);
 
 	// ALW - Push new element binding onto vector
 	mMouseButtonsAsButtonBindings.emplace_back(MouseButtonAsButton(mouseButtonAsButton), getWeakPtrToAction(eventGuid));
+}
+
+void ActionBinding::assignJoystickButtonAsButtonBinding(const JoystickButtonAsButton& joystickButtonAsButton, EventGuid eventGuid)
+{
+	// ALW - Remove duplicate buttons
+	auto duplicateButtons = std::remove_if(begin(mJoystickButtonsAsButtonBindings), end(mJoystickButtonsAsButtonBindings),
+		[&joystickButtonAsButton] (const std::pair<JoystickButtonAsButton, ActionWeakPtr>& element)
+		{
+			return joystickButtonAsButton.getInput() == element.first.getInput();
+		});
+
+	mJoystickButtonsAsButtonBindings.erase(duplicateButtons, mJoystickButtonsAsButtonBindings.end());
+
+	// ALW - Remove duplicate actions
+	removeDuplicateActionsInKeyboardKeysAsButtonBindings(eventGuid);
+	removeDuplicateActionsInMouseButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickAxesAsButtonBindings(eventGuid);
+
+	// ALW - Push new element binding onto vector
+	mJoystickButtonsAsButtonBindings.emplace_back(JoystickButtonAsButton(joystickButtonAsButton), getWeakPtrToAction(eventGuid));
+}
+
+void ActionBinding::assignJoystickAxisAsButtonBinding(const JoystickAxisAsButton& joystickAxisAsButton, EventGuid eventGuid)
+{
+	// ALW - Remove duplicate axes with the same ranges
+	auto duplicateButtons = std::remove_if(begin(mJoystickAxesAsButtonBindings), end(mJoystickAxesAsButtonBindings),
+		[&joystickAxisAsButton] (const std::pair<JoystickAxisAsButton, ActionWeakPtr>& element)
+		{
+			return joystickAxisAsButton.getInput() == element.first.getInput()
+				&& joystickAxisAsButton.getOnState() == element.first.getOnState()
+				&& joystickAxisAsButton.getOffState() == element.first.getOffState(); // ALW - TODO - Test a matchs
+		});
+
+	mJoystickAxesAsButtonBindings.erase(duplicateButtons, mJoystickAxesAsButtonBindings.end());
+
+	// ALW - Remove duplicate actions
+	removeDuplicateActionsInKeyboardKeysAsButtonBindings(eventGuid);
+	removeDuplicateActionsInMouseButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickButtonsAsButtonBindings(eventGuid);
+	removeDuplicateActionsInJoystickAxesAsButtonBindings(eventGuid);
+
+	// ALW - Push new element binding onto vector
+	mJoystickAxesAsButtonBindings.emplace_back(JoystickAxisAsButton(joystickAxisAsButton), getWeakPtrToAction(eventGuid));
 }
 
 void ActionBinding::removeDuplicateActionsInKeyboardKeysAsButtonBindings(EventGuid eventGuid)
@@ -118,6 +186,40 @@ void ActionBinding::removeDuplicateActionsInMouseButtonsAsButtonBindings(EventGu
 		});
 
 	mMouseButtonsAsButtonBindings.erase(duplicateActions, mMouseButtonsAsButtonBindings.end());
+}
+
+void ActionBinding::removeDuplicateActionsInJoystickButtonsAsButtonBindings(EventGuid eventGuid)
+{
+	auto duplicateActions = std::remove_if(begin(mJoystickButtonsAsButtonBindings), end(mJoystickButtonsAsButtonBindings),
+		[eventGuid] (const std::pair<JoystickButtonAsButton, ActionWeakPtr>& element)
+		{
+			ActionSharedPtr action = element.second.lock(); // ALW - get shared_ptr from weak_ptr
+			if (!action)
+			{
+				assert(("ALW - Logic Error: The managed object in mActions has been deleted!", false));
+			}
+
+			return eventGuid == action->getGameEvent().getType();
+		});
+
+	mJoystickButtonsAsButtonBindings.erase(duplicateActions, mJoystickButtonsAsButtonBindings.end());
+}
+
+void ActionBinding::removeDuplicateActionsInJoystickAxesAsButtonBindings(EventGuid eventGuid)
+{
+	auto duplicateActions = std::remove_if(begin(mJoystickAxesAsButtonBindings), end(mJoystickAxesAsButtonBindings),
+		[eventGuid] (const std::pair<JoystickAxisAsButton, ActionWeakPtr>& element)
+		{
+			ActionSharedPtr action = element.second.lock(); // ALW - get shared_ptr from weak_ptr
+			if (!action)
+			{
+				assert(("ALW - Logic Error: The managed object in mActions has been deleted!", false));
+			}
+
+			return eventGuid == action->getGameEvent().getType();
+		});
+
+	mJoystickAxesAsButtonBindings.erase(duplicateActions, mJoystickAxesAsButtonBindings.end());
 }
 
 ActionBinding::ActionWeakPtr ActionBinding::getWeakPtrToAction(EventGuid eventGuid) const

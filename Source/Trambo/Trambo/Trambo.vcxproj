@@ -22,6 +22,8 @@
     <ClCompile Include="GUI\label.cpp" />
     <ClCompile Include="Inputs\action.cpp" />
     <ClCompile Include="Inputs\actionBinding.cpp" />
+    <ClCompile Include="Inputs\joystickAxisAsButton.cpp" />
+    <ClCompile Include="Inputs\joystickButtonAsButton.cpp" />
     <ClCompile Include="Inputs\keyboardKeyAsButton.cpp" />
     <ClCompile Include="Inputs\mouseButtonAsButton.cpp" />
     <ClCompile Include="Sounds\musicPlayer.cpp" />
@@ -45,6 +47,8 @@
     <ClInclude Include="..\..\..\Include\Trambo\input.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickAxisAsButton.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickButtonAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\keyboardKeyAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\mouseButtonAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />

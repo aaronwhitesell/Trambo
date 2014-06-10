@@ -143,6 +143,12 @@
     <ClCompile Include="Inputs\mouseButtonAsButton.cpp">
       <Filter>Source Files\Inputs\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="Inputs\joystickAxisAsButton.cpp">
+      <Filter>Source Files\Inputs\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\joystickButtonAsButton.cpp">
+      <Filter>Source Files\Inputs\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\input.h">
@@ -215,6 +221,12 @@
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\mouseButtonAsButton.h">
+      <Filter>Header Files\Inputs\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickAxisAsButton.h">
+      <Filter>Header Files\Inputs\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickButtonAsButton.h">
       <Filter>Header Files\Inputs\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
