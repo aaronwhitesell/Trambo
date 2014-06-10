@@ -42,9 +42,9 @@ public:
 	void					handleEvent(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
 private:
-	void					MouseButtonAsButton::realTime(ActionWeakPtr actionWeakPtr);
-	void					MouseButtonAsButton::onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
-	void					MouseButtonAsButton::onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	void					realTime(ActionWeakPtr actionWeakPtr);
+	void					onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	void					onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
 
 private:

@@ -1,5 +1,4 @@
 #include "../../../../Include/Trambo/Inputs/mouseButtonAsButton.h"
-
 #include "../../../../Include/Trambo/Events/event.h"
 
 #include <SFML/Window/Event.hpp>

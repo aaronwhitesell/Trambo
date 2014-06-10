@@ -42,9 +42,9 @@ public:
 	void					handleEvent(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
 private:
-	void					KeyboardKeyAsButton::realTime(ActionWeakPtr actionWeakPtr);
-	void					KeyboardKeyAsButton::onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
-	void					KeyboardKeyAsButton::onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	void					realTime(ActionWeakPtr actionWeakPtr);
+	void					onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	void					onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
 
 private:
