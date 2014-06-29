@@ -24,8 +24,6 @@ class ActionBinding
 {
 public:
 	typedef unsigned long EventGuid;
-	typedef std::shared_ptr<Action> ActionSharedPtr;
-	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
 public:
@@ -37,6 +35,11 @@ public:
 	void					assignMouseButtonAsButtonBinding(const MouseButtonAsButton& mouseButtonAsButton, EventGuid eventGuid);
 	void					assignJoystickButtonAsButtonBinding(const JoystickButtonAsButton& joystickButtonAsButton, EventGuid eventGuid);
 	void					assignJoystickAxisAsButtonBinding(const JoystickAxisAsButton& joystickAxisAsButton, EventGuid eventGuid);
+
+
+private:
+	typedef std::shared_ptr<Action> ActionSharedPtr;
+	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
 private:

@@ -17,8 +17,6 @@ namespace trmb
 class JoystickButtonAsButton
 {
 public:
-	typedef unsigned long EventGuid;
-	typedef std::shared_ptr<Action> ActionSharedPtr;
 	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
@@ -38,6 +36,11 @@ public:
 
 	void					update(ActionWeakPtr actionWeakPtr);
 	void					handleEvent(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+
+
+private:
+	typedef std::shared_ptr<Action> ActionSharedPtr;
+
 
 private:
 	void					realTime(ActionWeakPtr actionWeakPtr);

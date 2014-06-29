@@ -19,8 +19,6 @@ namespace trmb
 class JoystickAxisAsButton
 {
 public:
-	typedef unsigned long EventGuid;
-	typedef std::shared_ptr<Action> ActionSharedPtr;
 	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
@@ -43,10 +41,9 @@ public:
 	void					update(ActionWeakPtr actionWeakPtr);
 	void					handleEvent(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
+
 private:
-	void					realTime(ActionWeakPtr actionWeakPtr);
-	void					onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
-	void					onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	typedef std::shared_ptr<Action> ActionSharedPtr;
 
 
 private:
@@ -55,6 +52,12 @@ private:
 		Off,
 		On,
 	};
+
+
+private:
+	void					realTime(ActionWeakPtr actionWeakPtr);
+	void					onPress(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
+	void					onRelease(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
 
 
 private:
