@@ -139,7 +139,7 @@ void ActionBinding::assignJoystickAxisAsButtonBinding(const JoystickAxisAsButton
 		{
 			return joystickAxisAsButton.getInput() == element.first.getInput()
 				&& joystickAxisAsButton.getOnState() == element.first.getOnState()
-				&& joystickAxisAsButton.getOffState() == element.first.getOffState(); // ALW - TODO - Test a matchs
+				&& joystickAxisAsButton.getOffState() == element.first.getOffState();
 		});
 
 	mJoystickAxesAsButtonBindings.erase(duplicateButtons, mJoystickAxesAsButtonBindings.end());
