@@ -20,11 +20,11 @@ Project Setup
 
 Project Configuration
 1. Project Properties -> Configuration Properties -> General -> Output Directory
-   (Debug) $(SolutionDir)..\..\Lib\DebugWin32VS2012\
-   (Release) $(SolutionDir)..\..\Lib\ReleaseWin32VS2012\
+   (Debug) $(SolutionDir)..\..\Lib\DebugWin32VS2013\
+   (Release) $(SolutionDir)..\..\Lib\ReleaseWin32VS2013\
 2. Project Properties -> Configuration Properties -> General -> Intermediate Directory
-   (Debug) $(SolutionDir)..\..\Temp\DebugWin32VS2012\
-   (Release) $(SolutionDir)..\..\Temp\ReleaseWin32VS2012\
+   (Debug) $(SolutionDir)..\..\Temp\DebugWin32VS2013\
+   (Release) $(SolutionDir)..\..\Temp\ReleaseWin32VS2013\
 3. Project Properties -> Configuration Properties -> General -> Target Name:
    (Debug) $(ProjectName)-d
    (Release) $(ProjectName)
