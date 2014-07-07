@@ -7,6 +7,51 @@
 namespace trmb
 {
 
+const std::vector<ActionBinding::ActionSharedPtr>& ActionBinding::getActions() const
+{
+	return mActions;
+}
+
+sf::Keyboard::Key ActionBinding::getInputFromKeyboardKeyAsButtonBinding(EventGuid eventGuid) const
+{
+	for (const auto& element : mKeyboardKeysAsButtonBindings)
+	{
+		ActionSharedPtr action = element.second.lock(); // ALW - get shared_ptr from weak_ptr
+		if (!action)
+		{
+			assert(("ALW - Logic Error: The managed object in mActions has been deleted!", false));
+		}
+
+		if (eventGuid == action->getGameEvent().getType())
+		{
+			return element.first.getInput();
+		}
+	}
+
+	// ALW - Hack - Allows check to be made, if action does not correspond to a button.
+	return sf::Keyboard::Unknown;
+}
+
+sf::Mouse::Button ActionBinding::getInputFromMouseButtonAsButtonBinding(EventGuid eventGuid) const
+{
+	for (const auto& element : mMouseButtonsAsButtonBindings)
+	{
+		ActionSharedPtr action = element.second.lock(); // ALW - get shared_ptr from weak_ptr
+		if (!action)
+		{
+			assert(("ALW - Logic Error: The managed object in mActions has been deleted!", false));
+		}
+
+		if (eventGuid == action->getGameEvent().getType())
+		{
+			return element.first.getInput();
+		}
+	}
+
+	// ALW - Hack - Allows check to be made, if action does not correspond to a button.
+	return sf::Mouse::Button::ButtonCount;
+}
+
 void ActionBinding::update()
 {
 	for (auto& element : mKeyboardKeysAsButtonBindings)

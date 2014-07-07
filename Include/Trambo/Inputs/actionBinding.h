@@ -7,6 +7,9 @@
 #include "../Inputs/keyboardKeyAsButton.h"
 #include "../Inputs/MouseButtonAsButton.h"
 
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Mouse.hpp>
+
 #include <memory>
 #include <utility>
 #include <vector>
@@ -24,9 +27,14 @@ class ActionBinding
 {
 public:
 	typedef unsigned long EventGuid;
+	typedef std::shared_ptr<Action> ActionSharedPtr;
 
 
 public:
+	const std::vector<ActionSharedPtr>& getActions() const;
+	sf::Keyboard::Key					getInputFromKeyboardKeyAsButtonBinding(EventGuid eventGuid) const;
+	sf::Mouse::Button					getInputFromMouseButtonAsButtonBinding(EventGuid eventGuid) const;
+
 	void					update();
 	void					handleEvent(const sf::Event& inputEvent);
 
@@ -38,7 +46,7 @@ public:
 
 
 private:
-	typedef std::shared_ptr<Action> ActionSharedPtr;
+//	typedef std::shared_ptr<Action> ActionSharedPtr;
 	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
