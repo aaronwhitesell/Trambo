@@ -151,9 +151,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\Trambo\input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>

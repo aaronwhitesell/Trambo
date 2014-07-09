@@ -44,7 +44,6 @@
     <ClInclude Include="..\..\..\Include\Trambo\GUI\component.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\container.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\label.h" />
-    <ClInclude Include="..\..\..\Include\Trambo\input.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickAxisAsButton.h" />
