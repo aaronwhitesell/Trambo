@@ -78,6 +78,12 @@
     <Filter Include="Source Files\Inputs\Buttons">
       <UniqueIdentifier>{2d45e5e4-a2b2-4426-bc0c-8ab969351d3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\SceneNodes">
+      <UniqueIdentifier>{f5dcbffa-1925-4511-9b23-351d227488c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SceneNodes">
+      <UniqueIdentifier>{5c4d83ab-e665-48b8-bd12-84263058c513}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Events\event.cpp">
@@ -148,6 +154,12 @@
     </ClCompile>
     <ClCompile Include="Inputs\joystickButtonAsButton.cpp">
       <Filter>Source Files\Inputs\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNodes\sceneNode.cpp">
+      <Filter>Source Files\SceneNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNodes\spriteNode.cpp">
+      <Filter>Source Files\SceneNodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +237,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickButtonAsButton.h">
       <Filter>Header Files\Inputs\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\sceneNode.h">
+      <Filter>Header Files\SceneNodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\spriteNode.h">
+      <Filter>Header Files\SceneNodes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
