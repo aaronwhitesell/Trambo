@@ -161,6 +161,9 @@
     <ClCompile Include="SceneNodes\spriteNode.cpp">
       <Filter>Source Files\SceneNodes</Filter>
     </ClCompile>
+    <ClCompile Include="SceneNodes\entity.cpp">
+      <Filter>Source Files\SceneNodes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h">
@@ -242,6 +245,9 @@
       <Filter>Header Files\SceneNodes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\spriteNode.h">
+      <Filter>Header Files\SceneNodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\entity.h">
       <Filter>Header Files\SceneNodes</Filter>
     </ClInclude>
   </ItemGroup>

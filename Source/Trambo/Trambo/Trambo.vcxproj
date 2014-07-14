@@ -26,6 +26,7 @@
     <ClCompile Include="Inputs\joystickButtonAsButton.cpp" />
     <ClCompile Include="Inputs\keyboardKeyAsButton.cpp" />
     <ClCompile Include="Inputs\mouseButtonAsButton.cpp" />
+    <ClCompile Include="SceneNodes\entity.cpp" />
     <ClCompile Include="SceneNodes\sceneNode.cpp" />
     <ClCompile Include="SceneNodes\spriteNode.cpp" />
     <ClCompile Include="Sounds\musicPlayer.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\keyboardKeyAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\mouseButtonAsButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Resources\resourceHolder.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\entity.h" />
     <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\sceneNode.h" />
     <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\spriteNode.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Sounds\musicPlayer.h" />
