@@ -3,19 +3,29 @@
 
 #include "layer.h"
 #include "tileset.h"
-#include "../types.h"
 
 #include "../../../Source/3rdParty/TinyXML2/tinyxml2.h"
 
+#include <SFML/Graphics/Texture.hpp>
+
 #include <string>
 #include <vector>
+
 
 namespace trmb
 {
 
 class Map
 {
+							friend class MapLayerNode;
+
+
 public:
+							Map();
+	explicit				Map(const std::string& filename);
+							Map(const Map &) = delete;
+	Map &					operator=(const Map &) = delete;
+
 	void					read(const std::string& filename);
 
 
@@ -25,15 +35,19 @@ private:
 	void					readTilesets(tinyxml2::XMLDocument& config);
 	void                    readLayers(tinyxml2::XMLDocument& config);
 
+	void					loadTilesetTextures();
+
 
 private:
-	uint					mWidth;
-	uint					mHeight;
-	uint					mTileWidth;
-	uint					mTileHeight;
+	int							mWidth;
+	int							mHeight;
+	int							mTileWidth;
+	int							mTileHeight;
 
-	std::vector<Tileset>	mTilesets;
-	std::vector<Layer>		mLayers;
+	std::vector<Tileset>		mTilesets;
+	std::vector<Layer>			mLayers;
+
+	std::vector<sf::Texture>	mTilesetTextures;
 };
 
 } // namespace trmb

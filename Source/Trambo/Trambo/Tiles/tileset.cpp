@@ -7,7 +7,7 @@
 namespace trmb
 {
 
-Tileset::Tileset(std::string name, std::string source, uint width, uint height, uint tileWidth, uint tileHeight, uint firstGid)
+Tileset::Tileset(std::string name, std::string source, int width, int height, int tileWidth, int tileHeight, int firstGid)
 : mName(name)
 , mSource(source)
 , mWidth(width)
@@ -21,8 +21,8 @@ Tileset::Tileset(std::string name, std::string source, uint width, uint height, 
 	assert(widthInTiles == floor(widthInTiles));	// ALW - Tileset width should be evenly divided by tile width
 	assert(heightInTiles == floor(heightInTiles));	// ALW - Tileset height should be evenly divided by tile height
 
-	mWidthInTiles = static_cast<uint>(widthInTiles);
-	mLastGid = mWidthInTiles * static_cast<uint>(heightInTiles) + mFirstGid - 1;
+	mWidthInTiles = static_cast<int>(widthInTiles);
+	mLastGid = mWidthInTiles * static_cast<int>(heightInTiles) + mFirstGid - 1;
 }
 
 } // namespace trmb

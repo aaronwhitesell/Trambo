@@ -6,6 +6,16 @@
 namespace trmb
 {
 
+Map::Map()
+{
+}
+
+Map::Map(const std::string& filename)
+{
+	read(filename);
+	loadTilesetTextures();
+}
+
 void Map::read(const std::string& filename)
 {
 	tinyxml2::XMLDocument config;
@@ -49,13 +59,13 @@ void Map::readTilesets(tinyxml2::XMLDocument& config)
 
 	for (; tileset != nullptr; tileset = tileset->NextSiblingElement("tileset"))
 	{
-		uint firstGid      = tileset->IntAttribute("firstgid");  
+		int firstGid       = tileset->IntAttribute("firstgid");
 		std::string name   = tileset->Attribute("name");
-		uint tileWidth     = tileset->IntAttribute("tilewidth");
-		uint tileHeight    = tileset->IntAttribute("tileheight");
+		int tileWidth      = tileset->IntAttribute("tilewidth");
+		int tileHeight     = tileset->IntAttribute("tileheight");
 		std::string source = tileset->FirstChildElement("image")->Attribute("source");
-		uint width         = tileset->FirstChildElement("image")->IntAttribute("width");
-		uint height        = tileset->FirstChildElement("image")->IntAttribute("height");
+		int width          = tileset->FirstChildElement("image")->IntAttribute("width");
+		int height         = tileset->FirstChildElement("image")->IntAttribute("height");
 
 		mTilesets.push_back(Tileset(name, source, width, height, tileWidth, tileHeight, firstGid));
 	}
@@ -73,15 +83,29 @@ void Map::readLayers(tinyxml2::XMLDocument& config)
 	for (; layer != nullptr; layer = layer->NextSiblingElement("layer"))
 	{
 		std::string name = layer->Attribute("name");  
-		uint width       = layer->IntAttribute("width");
-		uint height      = layer->IntAttribute("height");
+		int width        = layer->IntAttribute("width");
+		int height       = layer->IntAttribute("height");
 		
-		std::vector<uint> tiles;
+		std::vector<int> tiles;
 		tinyxml2::XMLElement* tile = layer->FirstChildElement("data")->FirstChildElement("tile");
 		for (; tile != nullptr; tile = tile->NextSiblingElement("tile"))
 			tiles.push_back(tile->IntAttribute("gid"));
 	
 		mLayers.push_back(Layer(name, width, height, tiles));
+	}
+}
+
+void Map::loadTilesetTextures()
+{
+	// ALW - Tileset textures are loaded here only once, instead of loading them
+	// ALW - multiple times in each instance of the MapLayerNode class.
+	std::string path = "Data/Textures/";
+
+	sf::Texture texture;
+	for (auto const &tileset : mTilesets)
+	{
+		texture.loadFromFile(path + tileset.mName + ".png");
+		mTilesetTextures.push_back(texture);
 	}
 }
 

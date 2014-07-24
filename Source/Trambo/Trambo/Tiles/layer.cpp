@@ -4,7 +4,7 @@
 namespace trmb
 {
 
-Layer::Layer(std::string name, uint width, uint height, std::vector<uint> tiles)
+Layer::Layer(std::string name, int width, int height, std::vector<int> tiles)
 : mName(name)
 , mWidth(width)
 , mHeight(height)
