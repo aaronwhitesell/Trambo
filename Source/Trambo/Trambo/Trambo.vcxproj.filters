@@ -84,6 +84,12 @@
     <Filter Include="Source Files\SceneNodes">
       <UniqueIdentifier>{5c4d83ab-e665-48b8-bd12-84263058c513}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{bc5fc424-9d27-4c9e-8a08-6c15ef81dfdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{f634c27f-5b94-49b1-a3a8-08b4bc77415f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Events\event.cpp">
@@ -166,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="SceneNodes\mapLayerNode.cpp">
       <Filter>Source Files\SceneNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\camera.cpp">
+      <Filter>Source Files\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\SceneNodes\mapLayerNode.h">
       <Filter>Header Files\SceneNodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Camera\camera.h">
+      <Filter>Header Files\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

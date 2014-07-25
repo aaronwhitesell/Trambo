@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\3rdParty\TinyXML2\tinyxml2.cpp" />
     <ClCompile Include="Animations\animation.cpp" />
+    <ClCompile Include="Camera\camera.cpp" />
     <ClCompile Include="Events\event.cpp" />
     <ClCompile Include="Events\eventDispatcher.cpp" />
     <ClCompile Include="Events\eventHandler.cpp" />
@@ -41,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\Animations\animation.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Camera\camera.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\event.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
