@@ -2,6 +2,7 @@
 #include "../../../../Include/Trambo/Animations/animation.h"
 
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
@@ -9,6 +10,7 @@
 #include <cmath>
 #include <ctime>
 #include <random>
+#include <Windows.h>
 
 
 namespace
@@ -202,6 +204,21 @@ sf::Vector2f unitVector(sf::Vector2f vector)
 {
 	assert(vector != sf::Vector2f(0.f, 0.f));
 	return vector / length(vector);
+}
+
+bool isWindowFocused(const sf::RenderWindow &window)
+{
+	// ALW - Warning: code is not cross platform
+	// ALW - A SFML window like any other window is not guarenteed to be opened with focus.  In SFML 2.1
+	// ALW - there is no way to keep track of the focus state from the beginning. Only after the focus state
+	// ALW - changes for the first time can it be tracked by the programmer.  This function allows for
+	// ALW - direct querying.
+
+	sf::WindowHandle handle = window.getSystemHandle();
+	bool isFocus = handle == GetFocus();
+	bool isForeground = handle == GetForegroundWindow();
+
+	return isFocus && isForeground;
 }
 
 } // trmb namespace

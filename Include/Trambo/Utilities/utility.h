@@ -11,6 +11,7 @@
 
 namespace sf
 {
+	class RenderWindow;
 	class Sprite;
 	class Text;
 }
@@ -40,6 +41,7 @@ int				randomInt(int exclusiveMax);
 float			length(sf::Vector2f vector);
 sf::Vector2f	unitVector(sf::Vector2f vector);
 
+bool			isWindowFocused(const sf::RenderWindow &window);
 } // trmb namespace
 
 #endif
