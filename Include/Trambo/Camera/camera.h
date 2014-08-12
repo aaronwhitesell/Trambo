@@ -19,6 +19,8 @@ public:
 	sf::View &				getView();
 	sf::FloatRect			getViewBounds() const;
 
+	void					setSize(sf::Vector2f size);
+
 	void					update(sf::Vector2f position);
 
 

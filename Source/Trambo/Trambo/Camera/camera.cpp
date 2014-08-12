@@ -17,6 +17,11 @@ sf::View & Camera::getView()
 	return mView;
 }
 
+void Camera::setSize(sf::Vector2f size)
+{
+	mView.setSize(size);
+}
+
 void Camera::update(sf::Vector2f position)
 {
 	mView.setCenter(position); // ALW - Center camera over new position
