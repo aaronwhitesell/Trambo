@@ -7,6 +7,10 @@
 namespace trmb
 {
 
+ActionBinding::ActionBinding()
+{
+}
+
 const std::vector<ActionBinding::ActionSharedPtr>& ActionBinding::getActions() const
 {
 	return mActions;

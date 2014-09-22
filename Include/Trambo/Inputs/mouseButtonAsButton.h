@@ -33,6 +33,7 @@ public:
 
 public:
 							MouseButtonAsButton(sf::Mouse::Button button, ButtonType buttonType);
+							// ALW - Allow copy construction and assignment
 
 	sf::Mouse::Button		getInput() const;
 

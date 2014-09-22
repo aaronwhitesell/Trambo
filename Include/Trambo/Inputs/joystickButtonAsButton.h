@@ -31,6 +31,7 @@ public:
 
 public:
 							JoystickButtonAsButton(unsigned int button, ButtonType buttonType, unsigned int joystickId);
+							// ALW - Allow copy construction and assignment
 
 	unsigned int		    getInput() const;
 

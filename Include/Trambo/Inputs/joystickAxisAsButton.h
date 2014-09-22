@@ -33,6 +33,7 @@ public:
 
 public:
 							JoystickAxisAsButton(sf::Joystick::Axis axis, ButtonType buttonType, unsigned int joystickId, float onState, float offState);
+							// ALW - Allow copy construction and assignment
 
 	sf::Joystick::Axis		getInput() const;
 	float					getOnState() const;

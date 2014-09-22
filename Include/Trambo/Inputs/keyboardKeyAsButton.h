@@ -33,6 +33,7 @@ public:
 
 public:
 							KeyboardKeyAsButton(sf::Keyboard::Key key, ButtonType buttonType);
+							// ALW - Allow copy construction and assignment
 
 	sf::Keyboard::Key		getInput() const;
 

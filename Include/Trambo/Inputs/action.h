@@ -17,6 +17,8 @@ public:
 public:
 	explicit				Action(EventGuid eventGuid);
 	explicit				Action(const Event& gameEvent);
+							Action(const Action &) = delete;
+	Action &				operator=(const Action &) = delete;
 
 	const Event&			getGameEvent() const;
 

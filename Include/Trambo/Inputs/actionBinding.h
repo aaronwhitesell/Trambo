@@ -31,6 +31,10 @@ public:
 
 
 public:
+										ActionBinding();
+										ActionBinding(const ActionBinding &) = delete;
+	ActionBinding &						operator=(const ActionBinding &) = delete;
+
 	const std::vector<ActionSharedPtr>& getActions() const;
 	sf::Keyboard::Key					getInputFromKeyboardKeyAsButtonBinding(EventGuid eventGuid) const;
 	sf::Mouse::Button					getInputFromMouseButtonAsButtonBinding(EventGuid eventGuid) const;
@@ -46,7 +50,6 @@ public:
 
 
 private:
-//	typedef std::shared_ptr<Action> ActionSharedPtr;
 	typedef std::weak_ptr<Action> ActionWeakPtr;
 
 
