@@ -1,6 +1,7 @@
 #include "../../../../Include/Trambo/Tiles/map.h"
 
 #include <cassert>
+#include <stdexcept>
 
 
 namespace trmb
