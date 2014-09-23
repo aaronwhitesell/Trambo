@@ -13,6 +13,9 @@ class EventHandler;
 class EventDispatcher 
 {
 public:
+								EventDispatcher(const EventDispatcher&) = delete;	// disallow copy constructor
+	EventDispatcher&			operator=(const EventDispatcher&) = delete;			// disallow assignment operator
+
 	static EventDispatcher&		getInstance();
 	void						registerListener(EventHandler* listener);
 	void						unregisterListener(EventHandler const * listener);
@@ -22,8 +25,6 @@ public:
 
 private:
 								EventDispatcher();							// available only to members and friends
-								EventDispatcher(EventDispatcher const&);	// disallow copy constructor
-								void operator=(EventDispatcher const&);		// disallow assignment operator
 
 
 private:

@@ -11,8 +11,9 @@ class EventHandler
 {
 public:
 							EventHandler();
+							EventHandler(const EventHandler&) = delete;
+	EventHandler&			operator=(const EventHandler&) = delete;
 	virtual					~EventHandler();
-
 
 	virtual void			handleEvent(const Event& event) = 0;
 

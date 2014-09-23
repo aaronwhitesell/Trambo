@@ -13,6 +13,7 @@ public:
 
 public:
 	explicit				Event(EventType type);
+							// ALW - Allow copy construction and assignment
 							~Event();
 
 	EventType				getType() const;
