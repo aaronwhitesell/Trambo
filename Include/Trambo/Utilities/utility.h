@@ -11,6 +11,7 @@
 
 namespace sf
 {
+	class RectangleShape;
 	class RenderWindow;
 	class Sprite;
 	class Text;
@@ -28,6 +29,7 @@ std::string		toString(sf::Mouse::Button key);
 // Call setOrigin() with the center of the object
 void			centerOrigin(sf::Sprite& sprite);
 void			centerOrigin(sf::Text& text);
+void			centerOrigin(sf::RectangleShape& rectangleShape);
 void			centerOrigin(Animation& animation);
 
 // Degree/radian conversion

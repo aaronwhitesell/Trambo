@@ -2,6 +2,7 @@
 #include "../../../../Include/Trambo/Animations/animation.h"
 
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -171,6 +172,12 @@ void centerOrigin(sf::Text& text)
 {
 	sf::FloatRect bounds = text.getLocalBounds();
 	text.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
+}
+
+void centerOrigin(sf::RectangleShape& rectangleShape)
+{
+	sf::FloatRect bounds = rectangleShape.getLocalBounds();
+	rectangleShape.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
 }
 
 void centerOrigin(Animation& animation)
