@@ -90,6 +90,12 @@
     <Filter Include="Source Files\Camera">
       <UniqueIdentifier>{f634c27f-5b94-49b1-a3a8-08b4bc77415f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Localize">
+      <UniqueIdentifier>{86ffc39a-f698-4e92-a615-711b213624f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Localize">
+      <UniqueIdentifier>{03094b8e-1e0e-416c-962b-25795b198362}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Events\event.cpp">
@@ -175,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="Camera\camera.cpp">
       <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Localize\localize.cpp">
+      <Filter>Source Files\Localize</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +276,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Camera\camera.h">
       <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Localize\localize.h">
+      <Filter>Header Files\Localize</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
