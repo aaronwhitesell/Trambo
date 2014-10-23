@@ -20,6 +20,11 @@ sf::Mouse::Button MouseButtonAsButton::getInput() const
 	return mInput;
 }
 
+MouseButtonAsButton::ButtonType MouseButtonAsButton::getButtonType() const
+{
+	return mButtonType;
+}
+
 void MouseButtonAsButton::update(ActionWeakPtr actionWeakPtr)
 {
 	realTime(actionWeakPtr);

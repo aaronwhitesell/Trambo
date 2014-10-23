@@ -20,6 +20,11 @@ sf::Keyboard::Key KeyboardKeyAsButton::getInput() const
 	return mInput;
 }
 
+KeyboardKeyAsButton::ButtonType KeyboardKeyAsButton::getButtonType() const
+{
+	return mButtonType;
+}
+
 void KeyboardKeyAsButton::update(ActionWeakPtr actionWeakPtr)
 {
 	realTime(actionWeakPtr);

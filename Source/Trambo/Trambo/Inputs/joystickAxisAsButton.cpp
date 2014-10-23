@@ -27,6 +27,11 @@ sf::Joystick::Axis JoystickAxisAsButton::getInput() const
 	return mInput;
 }
 
+JoystickAxisAsButton::ButtonType JoystickAxisAsButton::getButtonType() const
+{
+	return mButtonType;
+}
+
 float JoystickAxisAsButton::getOnState() const
 {
 	return mOnState;

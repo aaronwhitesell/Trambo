@@ -23,6 +23,11 @@ unsigned int JoystickButtonAsButton::getInput() const
 	return mInput;
 }
 
+JoystickButtonAsButton::ButtonType JoystickButtonAsButton::getButtonType() const
+{
+	return mButtonType;
+}
+
 void JoystickButtonAsButton::update(ActionWeakPtr actionWeakPtr)
 {
 	realTime(actionWeakPtr);

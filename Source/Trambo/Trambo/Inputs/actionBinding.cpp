@@ -123,7 +123,9 @@ void ActionBinding::assignKeyboardKeyAsButtonBinding(const KeyboardKeyAsButton& 
 	auto duplicateKeys = std::remove_if(begin(mKeyboardKeysAsButtonBindings), end(mKeyboardKeysAsButtonBindings), 
 		[&keyboardKeyAsButton] (const std::pair<KeyboardKeyAsButton, ActionWeakPtr>& element)
 		{ 
-			return keyboardKeyAsButton.getInput() == element.first.getInput(); 
+			// ALW - A button is considered a duplicate if both the input and the button type are the same.
+			return keyboardKeyAsButton.getInput() == element.first.getInput()
+				&& keyboardKeyAsButton.getButtonType() == element.first.getButtonType();
 		});
 
 	mKeyboardKeysAsButtonBindings.erase(duplicateKeys, mKeyboardKeysAsButtonBindings.end());
@@ -144,7 +146,9 @@ void ActionBinding::assignMouseButtonAsButtonBinding(const MouseButtonAsButton& 
 	auto duplicateButtons = std::remove_if(begin(mMouseButtonsAsButtonBindings), end(mMouseButtonsAsButtonBindings),
 		[&mouseButtonAsButton] (const std::pair<MouseButtonAsButton, ActionWeakPtr>& element)
 		{
-			return mouseButtonAsButton.getInput() == element.first.getInput();
+			// ALW - A button is considered a duplicate if both the input and the button type are the same.
+			return mouseButtonAsButton.getInput() == element.first.getInput()
+				&& mouseButtonAsButton.getButtonType() == element.first.getButtonType();
 		});
 
 	mMouseButtonsAsButtonBindings.erase(duplicateButtons, mMouseButtonsAsButtonBindings.end());
@@ -165,7 +169,9 @@ void ActionBinding::assignJoystickButtonAsButtonBinding(const JoystickButtonAsBu
 	auto duplicateButtons = std::remove_if(begin(mJoystickButtonsAsButtonBindings), end(mJoystickButtonsAsButtonBindings),
 		[&joystickButtonAsButton] (const std::pair<JoystickButtonAsButton, ActionWeakPtr>& element)
 		{
-			return joystickButtonAsButton.getInput() == element.first.getInput();
+			// ALW - A button is considered a duplicate if both the input and the button type are the same.
+			return joystickButtonAsButton.getInput() == element.first.getInput()
+				&& joystickButtonAsButton.getButtonType() == element.first.getButtonType();
 		});
 
 	mJoystickButtonsAsButtonBindings.erase(duplicateButtons, mJoystickButtonsAsButtonBindings.end());
@@ -186,7 +192,9 @@ void ActionBinding::assignJoystickAxisAsButtonBinding(const JoystickAxisAsButton
 	auto duplicateButtons = std::remove_if(begin(mJoystickAxesAsButtonBindings), end(mJoystickAxesAsButtonBindings),
 		[&joystickAxisAsButton] (const std::pair<JoystickAxisAsButton, ActionWeakPtr>& element)
 		{
+			// ALW - An axis is considered a duplicate if the input, button type, and states are the same.
 			return joystickAxisAsButton.getInput() == element.first.getInput()
+				&& joystickAxisAsButton.getButtonType() == element.first.getButtonType()
 				&& joystickAxisAsButton.getOnState() == element.first.getOnState()
 				&& joystickAxisAsButton.getOffState() == element.first.getOffState();
 		});

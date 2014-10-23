@@ -36,6 +36,7 @@ public:
 							// ALW - Allow copy construction and assignment
 
 	sf::Joystick::Axis		getInput() const;
+	ButtonType              getButtonType() const;
 	float					getOnState() const;
 	float					getOffState() const;
 

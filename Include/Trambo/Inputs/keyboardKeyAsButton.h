@@ -36,6 +36,7 @@ public:
 							// ALW - Allow copy construction and assignment
 
 	sf::Keyboard::Key		getInput() const;
+	ButtonType              getButtonType() const;
 
 	void					update(ActionWeakPtr actionWeakPtr);
 	void					handleEvent(const sf::Event& inputEvent, ActionWeakPtr actionWeakPtr);
