@@ -21,6 +21,8 @@
     <ClCompile Include="GUI\component.cpp" />
     <ClCompile Include="GUI\container.cpp" />
     <ClCompile Include="GUI\label.cpp" />
+    <ClCompile Include="HUD\buttonContainer.cpp" />
+    <ClCompile Include="HUD\gameButton.cpp" />
     <ClCompile Include="Inputs\action.cpp" />
     <ClCompile Include="Inputs\actionBinding.cpp" />
     <ClCompile Include="Inputs\joystickAxisAsButton.cpp" />
@@ -51,6 +53,8 @@
     <ClInclude Include="..\..\..\Include\Trambo\GUI\component.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\container.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\label.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\buttonContainer.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\gameButton.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickAxisAsButton.h" />

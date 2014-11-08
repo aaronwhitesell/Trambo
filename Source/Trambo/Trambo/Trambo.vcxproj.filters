@@ -96,6 +96,18 @@
     <Filter Include="Source Files\Localize">
       <UniqueIdentifier>{03094b8e-1e0e-416c-962b-25795b198362}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\HUD">
+      <UniqueIdentifier>{fb71718c-6609-4968-99ba-cde0f53803b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HUD\Buttons">
+      <UniqueIdentifier>{a0c2f895-9295-4f66-84b2-cd2240171aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HUD">
+      <UniqueIdentifier>{6af1c5b7-7e27-4e11-919a-d0eec38ee490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HUD\Buttons">
+      <UniqueIdentifier>{b907fc6c-59d8-4031-82b8-9015325489c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Events\event.cpp">
@@ -184,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="Localize\localize.cpp">
       <Filter>Source Files\Localize</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\gameButton.cpp">
+      <Filter>Source Files\HUD\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\buttonContainer.cpp">
+      <Filter>Source Files\HUD\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +297,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\Localize\localize.h">
       <Filter>Header Files\Localize</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\gameButton.h">
+      <Filter>Header Files\HUD\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\buttonContainer.h">
+      <Filter>Header Files\HUD\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
