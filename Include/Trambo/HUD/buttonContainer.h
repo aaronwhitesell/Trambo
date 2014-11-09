@@ -29,21 +29,25 @@ class ButtonContainer : public sf::Transformable, public sf::Drawable, public tr
 public:
 	using EventGuid = unsigned long;
 	using Rects = std::vector <sf::FloatRect>;
-	using ButtonPtr = std::shared_ptr<GameButton>;
-	using ButtonVector = std::vector<ButtonPtr>;
+	using Ptr = std::shared_ptr<GameButton>;
 
 
 public:
-							ButtonContainer(EventGuid leftClickPress, EventGuid leftClickRelease);
+							ButtonContainer(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& parentTransform
+								, EventGuid leftClickPress, EventGuid leftClickRelease);
 							ButtonContainer(const ButtonContainer&) = delete;
 	ButtonContainer&		operator=(const ButtonContainer&) = delete;
 
 	int						getSize() const;
 	Rects					getRects() const;
 
-	void					handler(const sf::RenderWindow &window, const sf::View& view, const sf::Transform& transform);
+	void					handler();
 	virtual void			handleEvent(const trmb::Event& gameEvent) override final;
-	void					pack(ButtonPtr button);
+	void					pack(Ptr button);
+
+
+private:
+	using Vector = std::vector<Ptr>;
 
 
 private:
@@ -52,13 +56,16 @@ private:
 	void					select(std::size_t index);
 	bool					hasSelection() const;
 
-	void					selectionHandler(void);
+	void					selectionHandler();
 
 
 private:
+	const sf::RenderWindow& mWindow;
+	const sf::View&         mView;
+	const sf::Transform&    mParentTransform;
 	const EventGuid			mLeftClickPress;    // ALW - Matches the GUID in the Controller class.
 	const EventGuid			mLeftClickRelease;  // ALW - Matches the GUID in the Controller class.
-	ButtonVector			mButtons;
+	Vector					mButtons;
 	Rects					mRects;
 	int						mSelectedButton;
 };

@@ -264,7 +264,6 @@ void GameButton::resizeFont()
 	// ALW - height is approximately the button height minus the vertical buffer.
 	const float verticalBuffer = 10.0f;
 
-	sf::FloatRect t = mText.getGlobalBounds();
 	float width34 = mSize.x / 4 * 3;
 	float height10 = mSize.y - verticalBuffer;
 	std::string str = mText.getString();

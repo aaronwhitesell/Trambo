@@ -13,8 +13,12 @@
 namespace trmb
 {
 
-ButtonContainer::ButtonContainer(EventGuid leftClickPress, EventGuid leftClickRelease)
-: mLeftClickPress(leftClickPress)
+ButtonContainer::ButtonContainer(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& parentTransform
+	, EventGuid leftClickPress, EventGuid leftClickRelease)
+: mWindow(window)
+, mView(view)
+, mParentTransform(parentTransform)
+, mLeftClickPress(leftClickPress)
 , mLeftClickRelease(leftClickRelease)
 , mSelectedButton(-1)
 {
@@ -41,13 +45,16 @@ ButtonContainer::Rects ButtonContainer::getRects() const
 	return rects;
 }
 
-void ButtonContainer::handler(const sf::RenderWindow &window, const sf::View &view, const sf::Transform& transform)
+void ButtonContainer::handler()
 {
-	sf::Transform combinedTransform = getTransform() * transform;
+	// ALW - TODO - This should occur on a mouse moved event. Otherwise,
+	// ALW - TODO - the position of the mouse is checked every frame!
+
+	sf::Transform combinedTransform = getTransform() * mParentTransform;
 
 	for (auto button : mButtons)
 	{
-		button->handler(window, view, combinedTransform);
+		button->handler(mWindow, mView, combinedTransform);
 	}
 
 	selectionHandler();
@@ -77,7 +84,7 @@ void ButtonContainer::handleEvent(const Event& gameEvent)
 	}
 }
 
-void ButtonContainer::pack(ButtonPtr button)
+void ButtonContainer::pack(Ptr button)
 {
 	mButtons.emplace_back(button);
 	standardizeCharacterSize();
@@ -95,7 +102,7 @@ void ButtonContainer::draw(sf::RenderTarget& target, sf::RenderStates states) co
 
 void ButtonContainer::standardizeCharacterSize()
 {
-	std::vector<ButtonPtr>::const_iterator iter = begin(mButtons);
+	std::vector<Ptr>::const_iterator iter = begin(mButtons);
 	if (iter != end(mButtons))
 	{
 		unsigned int min = (*iter)->getCharacerSize();
@@ -136,8 +143,6 @@ bool ButtonContainer::hasSelection() const
 
 void ButtonContainer::selectionHandler()
 {
-	// ALW - TODO - This should occur on a mouse moved event. Otherwise,
-	// ALW - TODO - the position of the mouse is checked every frame!
 	int index = 0;
 	bool hasSelection = false;
 	for (auto button : mButtons)

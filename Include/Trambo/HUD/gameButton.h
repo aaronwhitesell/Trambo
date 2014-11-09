@@ -40,7 +40,6 @@ class SoundPlayer;
 class GameButton : public sf::Transformable, public sf::Drawable
 {
 public:
-	using EventGuid = unsigned long;
 	using Callback = std::function<void()>;
 
 
@@ -90,10 +89,6 @@ public:
 	void					activate();
 
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
-
-
-private:
-	typedef unsigned long EventGuid;
 
 
 private:
