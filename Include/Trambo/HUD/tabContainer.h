@@ -1,0 +1,71 @@
+#ifndef TRAMBO_TAB_CONTAINER_H
+#define TRAMBO_TAB_CONTAINER_H
+
+#include "../Events/eventHandler.h"
+
+#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/Transformable.hpp>
+
+#include <memory>
+#include <vector>
+
+
+namespace sf
+{
+	class RenderStates;
+	class RenderTarget;
+	class RenderWindow;
+	class View;
+}
+
+namespace trmb
+{
+
+class GameTab;
+
+class TabContainer : public sf::Transformable, public sf::Drawable, public trmb::EventHandler
+{
+public:
+	using EventGuid = unsigned long;
+	using Rects = std::vector <sf::FloatRect>;
+	using Ptr = std::shared_ptr<GameTab>;
+
+
+public:
+							TabContainer(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& parentTransform
+								, EventGuid leftClickPress);
+							TabContainer(const TabContainer&) = delete;
+	TabContainer&			operator=(const TabContainer&) = delete;
+
+	int						getSize() const;
+	Rects					getRects() const;
+
+	virtual void			handleEvent(const trmb::Event& gameEvent) override final;
+	void					pack(Ptr ptr);
+
+
+private:
+	using Vector = std::vector<Ptr>;
+
+
+private:
+	virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const override final;
+	void					standardizeCharacterSize();
+	void					activate(std::size_t index);
+	bool					isActivated() const;
+
+
+private:
+	const sf::RenderWindow& mWindow;
+	const sf::View&         mView;
+	const sf::Transform&    mParentTransform;
+	const EventGuid			mLeftClickPress;    // ALW - Matches the GUID in the Controller class.
+	Vector					mTabs;
+	Rects					mRects;
+	int						mActivatedTab;
+};
+
+} // namespace trmb
+
+#endif

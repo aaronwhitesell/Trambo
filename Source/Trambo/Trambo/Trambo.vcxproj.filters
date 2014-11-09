@@ -108,6 +108,12 @@
     <Filter Include="Source Files\HUD\Buttons">
       <UniqueIdentifier>{b907fc6c-59d8-4031-82b8-9015325489c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\HUD\Tabs">
+      <UniqueIdentifier>{ee5bdf59-9776-48a3-8787-d57fd92b0f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HUD\Tabs">
+      <UniqueIdentifier>{0b68e56f-c885-43fb-84e7-17068ebee581}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Events\event.cpp">
@@ -202,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="HUD\buttonContainer.cpp">
       <Filter>Source Files\HUD\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\tabContainer.cpp">
+      <Filter>Source Files\HUD\Tabs</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD\gameTab.cpp">
+      <Filter>Source Files\HUD\Tabs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +315,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\HUD\buttonContainer.h">
       <Filter>Header Files\HUD\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\tabContainer.h">
+      <Filter>Header Files\HUD\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\gameTab.h">
+      <Filter>Header Files\HUD\Tabs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
