@@ -27,10 +27,10 @@ std::string		toString(sf::Keyboard::Key key);
 std::string		toString(sf::Mouse::Button key);
 
 // Call setOrigin() with the center of the object
-void			centerOrigin(sf::Sprite& sprite);
-void			centerOrigin(sf::Text& text);
-void			centerOrigin(sf::RectangleShape& rectangleShape);
-void			centerOrigin(Animation& animation);
+void			centerOrigin(sf::Sprite& sprite, bool centerXAxis = true, bool centerYAxis = true);
+void			centerOrigin(sf::Text& text, bool centerXAxis = true, bool centerYAxis = true);
+void			centerOrigin(sf::RectangleShape& rectangleShape, bool centerXAxis = true, bool centerYAxis = true);
+void			centerOrigin(Animation& animation, bool centerXAxis = true, bool centerYAxis = true);
 
 // Degree/radian conversion
 float			toDegree(float radian);

@@ -162,28 +162,64 @@ std::string toString(sf::Mouse::Button button)
 	}
 }
 
-void centerOrigin(sf::Sprite& sprite)
+void centerOrigin(sf::Sprite& sprite, bool centerXAxis, bool centerYAxis)
 {
 	sf::FloatRect bounds = sprite.getLocalBounds();
-	sprite.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
+	float xAxis = 0.0f;
+	float yAxis = 0.0f;
+
+	if (centerXAxis)
+		xAxis = std::floor(bounds.width / 2.0f);
+
+	if (centerYAxis)
+		yAxis = std::floor(bounds.height / 2.0f);
+
+	sprite.setOrigin(xAxis, yAxis);
 }
 
-void centerOrigin(sf::Text& text)
+void centerOrigin(sf::Text& text, bool centerXAxis, bool centerYAxis)
 {
 	sf::FloatRect bounds = text.getLocalBounds();
-	text.setOrigin(std::floor(bounds.left + bounds.width / 2.f), std::floor(bounds.top + bounds.height / 2.f));
+	float xAxis = 0.0f;
+	float yAxis = 0.0f;
+
+	if (centerXAxis)
+		xAxis = std::floor(bounds.left + bounds.width / 2.f);
+
+	if (centerYAxis)
+		yAxis = std::floor(bounds.top + bounds.height / 2.f);
+
+	text.setOrigin(xAxis, yAxis);
 }
 
-void centerOrigin(sf::RectangleShape& rectangleShape)
+void centerOrigin(sf::RectangleShape& rectangleShape, bool centerXAxis, bool centerYAxis)
 {
 	sf::FloatRect bounds = rectangleShape.getLocalBounds();
-	rectangleShape.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
+	float xAxis = 0.0f;
+	float yAxis = 0.0f;
+
+	if (centerXAxis)
+		xAxis = std::floor(bounds.width / 2.0f);
+
+	if (centerYAxis)
+		yAxis = std::floor(bounds.height / 2.0f);
+
+	rectangleShape.setOrigin(xAxis, yAxis);
 }
 
-void centerOrigin(Animation& animation)
+void centerOrigin(Animation& animation, bool centerXAxis, bool centerYAxis)
 {
 	sf::FloatRect bounds = animation.getLocalBounds();
-	animation.setOrigin(std::floor(bounds.width / 2.f), std::floor(bounds.height / 2.f));
+	float xAxis = 0.0f;
+	float yAxis = 0.0f;
+
+	if (centerXAxis)
+		xAxis = std::floor(bounds.width / 2.0f);
+
+	if (centerYAxis)
+		yAxis = std::floor(bounds.height / 2.0f);
+
+	animation.setOrigin(xAxis, yAxis);
 }
 
 float toDegree(float radian)
