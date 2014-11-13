@@ -215,6 +215,9 @@
     <ClCompile Include="HUD\gameTab.cpp">
       <Filter>Source Files\HUD\Tabs</Filter>
     </ClCompile>
+    <ClCompile Include="HUD\incDec.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h">
@@ -321,6 +324,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\HUD\gameTab.h">
       <Filter>Header Files\HUD\Tabs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\incDec.h">
+      <Filter>Header Files\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
