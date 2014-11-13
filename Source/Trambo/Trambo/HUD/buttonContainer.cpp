@@ -2,6 +2,7 @@
 #include "../../../../Include/Trambo/HUD/gameButton.h"
 #include "../../../../Include/Trambo/Events/event.h"
 
+#include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -13,12 +14,8 @@
 namespace trmb
 {
 
-ButtonContainer::ButtonContainer(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& parentTransform
-	, EventGuid leftClickPress, EventGuid leftClickRelease)
-: mWindow(window)
-, mView(view)
-, mParentTransform(parentTransform)
-, mLeftClickPress(leftClickPress)
+ButtonContainer::ButtonContainer(EventGuid leftClickPress, EventGuid leftClickRelease)
+: mLeftClickPress(leftClickPress)
 , mLeftClickRelease(leftClickRelease)
 , mSelectedButton(-1)
 {
@@ -45,16 +42,42 @@ ButtonContainer::Rects ButtonContainer::getRects() const
 	return rects;
 }
 
-void ButtonContainer::handler()
+void ButtonContainer::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor
+		, sf::Color hoverBackgroundColor, sf::Color hoverTextColor, sf::Color hoverOutlineColor
+		, sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor
+		, sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor
+		, float outLineThickness)
 {
-	// ALW - TODO - This should occur on a mouse moved event. Otherwise,
-	// ALW - TODO - the position of the mouse is checked every frame!
+	for (auto button : mButtons)
+	{
+		button->setBackgroundColor(backgroundColor);
+		button->setTextColor(textColor);
+		button->setOutlineColor(outlineColor);
 
-	sf::Transform combinedTransform = getTransform() * mParentTransform;
+		button->setHoverBackgroundColor(hoverBackgroundColor);
+		button->setHoverTextColor(hoverTextColor);
+		button->setHoverOutlineColor(hoverOutlineColor);
+
+		button->setDepressBackgroundColor(depressBackgroundColor);
+		button->setDepressTextColor(depressTextColor);
+		button->setDepressOutlineColor(depressOutlineColor);
+
+		button->setDisableBackgroundColor(disableBackgroundColor);
+		button->setDisableTextColor(disableTextColor);
+		button->setDisableOutlineColor(disableOutlineColor);
+
+		button->setOutlineThickness(outLineThickness);
+	}
+}
+
+void ButtonContainer::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
+{
+	// ALW - This should occur on a mouse moved event. Otherwise, the position of the mouse is checked every frame!
+	sf::Transform combinedTransform = getTransform() * transform;
 
 	for (auto button : mButtons)
 	{
-		button->handler(mWindow, mView, combinedTransform);
+		button->handler(window, view, combinedTransform);
 	}
 
 	selectionHandler();

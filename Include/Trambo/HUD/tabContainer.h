@@ -13,6 +13,7 @@
 
 namespace sf
 {
+	class Color;
 	class RenderStates;
 	class RenderTarget;
 	class RenderWindow;
@@ -33,16 +34,22 @@ public:
 
 
 public:
-							TabContainer(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& parentTransform
-								, EventGuid leftClickPress);
+							TabContainer(EventGuid leftClickPress);
 							TabContainer(const TabContainer&) = delete;
 	TabContainer&			operator=(const TabContainer&) = delete;
 
 	int						getSize() const;
 	Rects					getRects() const;
 
+	void					setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor,
+								sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor,
+								sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor,
+								float outLineThickness);
+
+	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
 	virtual void			handleEvent(const trmb::Event& gameEvent) override final;
 	void					pack(Ptr ptr);
+	void					deactivate();
 
 
 private:
@@ -57,9 +64,6 @@ private:
 
 
 private:
-	const sf::RenderWindow& mWindow;
-	const sf::View&         mView;
-	const sf::Transform&    mParentTransform;
 	const EventGuid			mLeftClickPress;    // ALW - Matches the GUID in the Controller class.
 	Vector					mTabs;
 	Rects					mRects;
