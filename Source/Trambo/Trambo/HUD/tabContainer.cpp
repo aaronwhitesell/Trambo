@@ -104,6 +104,28 @@ void TabContainer::pack(Ptr ptr)
 	standardizeCharacterSize();
 }
 
+void TabContainer::standardizeCharacterSize()
+{
+	std::vector<Ptr>::const_iterator iter = begin(mTabs);
+	if (iter != end(mTabs))
+	{
+		unsigned int min = (*iter)->getCharacerSize();
+		++iter;
+
+		for (; iter != end(mTabs); ++iter)
+		{
+			// ALW - Find the smallest character size
+			min = std::min(min, (*iter)->getCharacerSize());
+		}
+
+		for (auto tab : mTabs)
+		{
+			// ALW - Apply smallest character size to all
+			(tab)->setCharacterSize(min);
+		}
+	}
+}
+
 void TabContainer::deactivate()
 {
 	// ALW - Leave no tab activated
@@ -125,28 +147,6 @@ void TabContainer::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (auto tab : mTabs)
 	{
 		target.draw(*tab, states);
-	}
-}
-
-void TabContainer::standardizeCharacterSize()
-{
-	std::vector<Ptr>::const_iterator iter = begin(mTabs);
-	if (iter != end(mTabs))
-	{
-		unsigned int min = (*iter)->getCharacerSize();
-		++iter;
-
-		for (; iter != end(mTabs); ++iter)
-		{
-			// ALW - Find the smallest character size
-			min = std::min(min, (*iter)->getCharacerSize());
-		}
-
-		for (auto tab : mTabs)
-		{
-			// ALW - Apply smallest character size to all
-			(tab)->setCharacterSize(min);
-		}
 	}
 }
 

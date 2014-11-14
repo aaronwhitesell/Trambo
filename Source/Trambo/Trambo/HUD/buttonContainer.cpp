@@ -113,16 +113,6 @@ void ButtonContainer::pack(Ptr button)
 	standardizeCharacterSize();
 }
 
-void ButtonContainer::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-
-	for (auto button : mButtons)
-	{
-		target.draw(*button, states);
-	}
-}
-
 void ButtonContainer::standardizeCharacterSize()
 {
 	std::vector<Ptr>::const_iterator iter = begin(mButtons);
@@ -142,6 +132,16 @@ void ButtonContainer::standardizeCharacterSize()
 			// ALW - Apply smallest character size to all
 			(button)->setCharacterSize(min);
 		}
+	}
+}
+
+void ButtonContainer::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	states.transform *= getTransform();
+
+	for (auto button : mButtons)
+	{
+		target.draw(*button, states);
 	}
 }
 

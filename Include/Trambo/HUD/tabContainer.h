@@ -49,6 +49,7 @@ public:
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
 	virtual void			handleEvent(const trmb::Event& gameEvent) override final;
 	void					pack(Ptr ptr);
+	void					standardizeCharacterSize();
 	void					deactivate();
 
 
@@ -58,7 +59,6 @@ private:
 
 private:
 	virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const override final;
-	void					standardizeCharacterSize();
 	void					activate(std::size_t index);
 	bool					isActivated() const;
 
