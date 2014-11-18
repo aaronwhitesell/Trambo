@@ -60,17 +60,23 @@ unsigned int GameTab::getCharacerSize() const
 	return mText.getCharacterSize();
 }
 
-void GameTab::setSize(sf::Vector2f size)
+void GameTab::setSize(sf::Vector2f size, bool resize)
 {
 	mSize = size;
 	mBackground.setSize(mSize);
 	resizeFont();
+
+	if (resize)
+		resizeFont();
 }
 
-void GameTab::setText(std::string string)
+void GameTab::setText(std::string string, bool resize)
 {
 	mText.setString(string);
 	resizeFont();
+
+	if (resize)
+		resizeFont();
 }
 
 void GameTab::setFont(Fonts::ID fontID)

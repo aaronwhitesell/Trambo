@@ -45,7 +45,7 @@ public:
 
 public:
 							GameButton(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, SoundPlayer& sounds,
-								sf::Vector2f size = sf::Vector2f(0, 0));
+								sf::Vector2f size = sf::Vector2f(50.0f, 20.0f));
 							GameButton(const GameButton&) = delete;
 	GameButton&				operator=(const GameButton&) = delete;
 
@@ -56,8 +56,8 @@ public:
 	sf::Vector2f			getSize() const;
 	unsigned int			getCharacerSize() const;
 
-	void					setSize(sf::Vector2f size);
-	void					setText(std::string string);
+	void					setSize(sf::Vector2f size, bool resize = true);
+	void					setText(std::string string, bool resize = true);
 	void					setFont(Fonts::ID fontID);
 	void					setCharacterSize(unsigned int CharacterSize);
 

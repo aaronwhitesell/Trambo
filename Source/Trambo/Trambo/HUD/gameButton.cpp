@@ -69,17 +69,21 @@ unsigned int GameButton::getCharacerSize() const
 	return mText.getCharacterSize();
 }
 
-void GameButton::setSize(sf::Vector2f size)
+void GameButton::setSize(sf::Vector2f size, bool resize)
 {
 	mSize = size;
-	mBackground.setSize(mSize);
-	resizeFont();
+	mBackground.setSize(size);
+
+	if (resize)
+		resizeFont();
 }
 
-void GameButton::setText(std::string string)
+void GameButton::setText(std::string string, bool resize)
 {
 	mText.setString(string);
-	resizeFont();
+
+	if (resize)
+		resizeFont();
 }
 
 void GameButton::setFont(Fonts::ID fontID)
