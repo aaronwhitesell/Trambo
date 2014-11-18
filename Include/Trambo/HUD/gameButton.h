@@ -18,6 +18,7 @@ namespace sf
 	class RenderStates;
 	class RenderTarget;
 	class RenderWindow;
+	class Transform;
 	class View;
 }
 
@@ -34,7 +35,6 @@ namespace SoundEffects
 namespace trmb
 {
 
-class Event;
 class SoundPlayer;
 
 class GameButton : public sf::Transformable, public sf::Drawable

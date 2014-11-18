@@ -17,12 +17,14 @@ namespace sf
 	class RenderStates;
 	class RenderTarget;
 	class RenderWindow;
+	class Transform;
 	class View;
 }
 
 namespace trmb
 {
 
+class Event;
 class GameTab;
 
 class TabContainer : public sf::Transformable, public sf::Drawable, public trmb::EventHandler

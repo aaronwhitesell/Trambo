@@ -6,7 +6,7 @@
 #include "../Resources/resourceHolder.h"
 
 #include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Transform.hpp>
+#include <SFML/Graphics/Transformable.hpp>
 #include <SFML/System/Vector2.hpp>
 
 
@@ -16,6 +16,7 @@ namespace sf
 	class RenderStates;
 	class RenderTarget;
 	class RenderWindow;
+	class Transform;
 	class View;
 }
 

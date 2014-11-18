@@ -6,6 +6,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Transform.hpp>
 #include <SFML/Graphics/View.hpp>
 
 #include <algorithm>
@@ -68,7 +69,7 @@ void TabContainer::handler(const sf::RenderWindow& window, const sf::View& view,
 {
 	// ALW - This should occur on a left-click press event. Otherwise, the position of the mouse is checked every frame!
 	// ALW - In addition to this the combined transform cannot be calculated in the ctor, because the object is unitialized
-	// ALW - so the transform is unknown. Therefore, the handler function is used soley to pass in the parent transform.
+	// ALW - so the transform is unknown. Therefore, the handler function is used to pass in the parent transform.
 	// ALW - Idealy, the transform would be passed directly to the handleEvent() method, but this is not possible.
 
 	sf::Transform combinedTransform = getTransform() * transform;
