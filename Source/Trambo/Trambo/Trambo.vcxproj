@@ -26,6 +26,7 @@
     <ClCompile Include="HUD\gameTab.cpp" />
     <ClCompile Include="HUD\incDec.cpp" />
     <ClCompile Include="HUD\tabContainer.cpp" />
+    <ClCompile Include="HUD\undoUIElem.cpp" />
     <ClCompile Include="Inputs\action.cpp" />
     <ClCompile Include="Inputs\actionBinding.cpp" />
     <ClCompile Include="Inputs\joystickAxisAsButton.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="..\..\..\Include\Trambo\HUD\gameTab.h" />
     <ClInclude Include="..\..\..\Include\Trambo\HUD\incDec.h" />
     <ClInclude Include="..\..\..\Include\Trambo\HUD\tabContainer.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\undoUIElem.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\action.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\actionBinding.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Inputs\joystickAxisAsButton.h" />

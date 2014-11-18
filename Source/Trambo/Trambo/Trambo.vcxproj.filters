@@ -218,6 +218,9 @@
     <ClCompile Include="HUD\incDec.cpp">
       <Filter>Source Files\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="HUD\undoUIElem.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h">
@@ -326,6 +329,9 @@
       <Filter>Header Files\HUD\Tabs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\HUD\incDec.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\HUD\undoUIElem.h">
       <Filter>Header Files\HUD</Filter>
     </ClInclude>
   </ItemGroup>
