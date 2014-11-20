@@ -44,6 +44,30 @@ sf::Vector2f UndoUIElem::getSize() const
 	return mButtonSize;
 }
 
+void UndoUIElem::setState(bool flag)
+{
+	mDoState = flag;
+
+	const sf::Vector2f hide = sf::Vector2f(0.0f, 0.0f);
+
+	if (mDoState)
+	{
+		mDoButton->setSize(mButtonSize, false);
+		mDoButton->setText(mDoText, false);
+
+		mUndoButton->setSize(hide, false);
+		mUndoButton->setText("", false);
+	}
+	else
+	{
+		mDoButton->setSize(hide, false);
+		mDoButton->setText("", false);
+
+		mUndoButton->setSize(mButtonSize, false);
+		mUndoButton->setText(mUndoText, false);
+	}
+}
+
 void UndoUIElem::setSize(sf::Vector2f size)
 {
 	mButtonSize = size;

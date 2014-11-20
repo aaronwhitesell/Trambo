@@ -46,6 +46,7 @@ public:
 
 	sf::Vector2f		getSize() const;
 
+	void				setState(bool flag);
 	void				setSize(sf::Vector2f size);
 	void				setText(std::string doString, std::string undoString);
 	void				setCallbacks(Callback doCallback, Callback undoCallback);
