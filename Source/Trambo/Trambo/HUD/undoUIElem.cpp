@@ -47,31 +47,12 @@ sf::Vector2f UndoUIElem::getSize() const
 void UndoUIElem::setState(bool flag)
 {
 	mDoState = flag;
-
-	const sf::Vector2f hide = sf::Vector2f(0.0f, 0.0f);
-
-	if (mDoState)
-	{
-		mDoButton->setSize(mButtonSize, false);
-		mDoButton->setText(mDoText, false);
-
-		mUndoButton->setSize(hide, false);
-		mUndoButton->setText("", false);
-	}
-	else
-	{
-		mDoButton->setSize(hide, false);
-		mDoButton->setText("", false);
-
-		mUndoButton->setSize(mButtonSize, false);
-		mUndoButton->setText(mUndoText, false);
-	}
+	restoreButtons();
 }
 
 void UndoUIElem::setSize(sf::Vector2f size)
 {
 	mButtonSize = size;
-
 	standardizeCharacterSize();
 }
 
@@ -79,8 +60,15 @@ void UndoUIElem::setText(std::string doString, std::string undoString)
 {
 	mDoText = doString;
 	mUndoText = undoString;
-
 	standardizeCharacterSize();
+}
+
+void UndoUIElem::setCharacterSize(unsigned int size)
+{
+	showButtons();
+	mDoButton->setCharacterSize(size);
+	mUndoButton->setCharacterSize(size);
+	restoreButtons();
 }
 
 void UndoUIElem::setCallbacks(Callback doCallback, Callback undoCallback)
@@ -157,7 +145,7 @@ void UndoUIElem::handleEvent(const trmb::Event& gameEvent)
 
 			if (mMouseOver)
 			{
-				toggleHandler();
+				setState(!mDoState);
 			}
 		}
 	}
@@ -171,33 +159,23 @@ void UndoUIElem::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void UndoUIElem::standardizeCharacterSize()
 {
+	showButtons();
+	mContainer.standardizeCharacterSize();
+	restoreButtons();
+}
+
+void UndoUIElem::showButtons()
+{
 	// ALW - Set text and size for both buttons
 	mDoButton->setSize(mButtonSize);
 	mDoButton->setText(mDoText);
 	mUndoButton->setSize(mButtonSize);
 	mUndoButton->setText(mUndoText);
-
-	// ALW - Standardize text
-	mContainer.standardizeCharacterSize();
-
-	// Rehide button based on mDoState
-	const sf::Vector2f hide = sf::Vector2f(0.0f, 0.0f);
-
-	if (mDoState)
-	{
-		mUndoButton->setSize(hide, false);
-		mUndoButton->setText("", false);
-	}
-	else
-	{
-		mDoButton->setSize(hide, false);
-		mDoButton->setText("", false);
-	}
 }
 
-void UndoUIElem::toggleHandler()
+void UndoUIElem::restoreButtons()
 {
-	mDoState = !mDoState;
+	// ALW - Restore buttons based on mDoState
 	const sf::Vector2f hide = sf::Vector2f(0.0f, 0.0f);
 
 	if (mDoState)

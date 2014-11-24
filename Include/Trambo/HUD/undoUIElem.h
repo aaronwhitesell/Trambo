@@ -49,6 +49,7 @@ public:
 	void				setState(bool flag);
 	void				setSize(sf::Vector2f size);
 	void				setText(std::string doString, std::string undoString);
+	void				setCharacterSize(unsigned int size);
 	void				setCallbacks(Callback doCallback, Callback undoCallback);
 	void				setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor
 							, sf::Color hoverBackgroundColor, sf::Color hoverTextColor, sf::Color hoverOutlineColor
@@ -67,7 +68,8 @@ private:
 private:
 	virtual void		draw(sf::RenderTarget& target, sf::RenderStates states) const override final;
 	void				standardizeCharacterSize();
-	void				toggleHandler();
+	void				showButtons();
+	void				restoreButtons();
 
 
 private:
