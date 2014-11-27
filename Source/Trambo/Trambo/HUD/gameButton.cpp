@@ -155,6 +155,19 @@ void GameButton::setDepressOutlineColor(const sf::Color& color)
 void GameButton::setDisable(bool flag)
 {
 	mDisable = flag;
+
+	if (mDisable)
+	{
+		mText.setColor(mDisableTextColor);
+		mBackground.setFillColor(mDisableBackgroundColor);
+		mBackground.setOutlineColor(mDisableOutlineColor);
+	}
+	else
+	{
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+	}
 }
 
 void GameButton::setDisableBackgroundColor(const sf::Color& color)
@@ -179,74 +192,93 @@ void GameButton::setCallback(Callback callback)
 
 void GameButton::select()
 {
-	mSelected = true;
-
-	mText.setColor(mHoverTextColor);
-	mBackground.setFillColor(mHoverBackgroundColor);
-	mBackground.setOutlineColor(mHoverOutlineColor);
-}
-
-void GameButton::deselect()
-{
-	mSelected = false;
-
-	mText.setColor(mTextColor);
-	mBackground.setFillColor(mBackgroundColor);
-	mBackground.setOutlineColor(mOutlineColor);
-}
-
-void GameButton::press()
-{
-	mPressed = true;
-
-	mText.setColor(mDepressTextColor);
-	mBackground.setFillColor(mDepressBackgroundColor);
-	mBackground.setOutlineColor(mDepressOutlineColor);
-}
-
-void GameButton::cancelPress()
-{
-	mPressed = false;
-
-	deselect();
-}
-
-void GameButton::activate()
-{
-	mPressed = false;
-
-	if (mCallback)
-		mCallback();
-
-	if (isSelected())
+	if (!mDisable)
 	{
+		mSelected = true;
+
 		mText.setColor(mHoverTextColor);
 		mBackground.setFillColor(mHoverBackgroundColor);
 		mBackground.setOutlineColor(mHoverOutlineColor);
 	}
-	else
+}
+
+void GameButton::deselect()
+{
+	if (!mDisable)
 	{
+		mSelected = false;
+
 		mText.setColor(mTextColor);
 		mBackground.setFillColor(mBackgroundColor);
 		mBackground.setOutlineColor(mOutlineColor);
 	}
+}
 
-	mSounds.play(mSoundID);
+void GameButton::press()
+{
+	if (!mDisable)
+	{
+		mPressed = true;
+
+		mText.setColor(mDepressTextColor);
+		mBackground.setFillColor(mDepressBackgroundColor);
+		mBackground.setOutlineColor(mDepressOutlineColor);
+	}
+}
+
+void GameButton::cancelPress()
+{
+	if (!mDisable)
+	{
+		mPressed = false;
+
+		deselect();
+	}
+}
+
+void GameButton::activate()
+{
+	if (!mDisable)
+	{
+		mPressed = false;
+
+		if (mCallback)
+			mCallback();
+
+		if (isSelected())
+		{
+			mText.setColor(mHoverTextColor);
+			mBackground.setFillColor(mHoverBackgroundColor);
+			mBackground.setOutlineColor(mHoverOutlineColor);
+		}
+		else
+		{
+			mText.setColor(mTextColor);
+			mBackground.setFillColor(mBackgroundColor);
+			mBackground.setOutlineColor(mOutlineColor);
+		}
+
+		mSounds.play(mSoundID);
+	}
 }
 
 void GameButton::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
-	const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
-	const sf::Vector2f mousePosition = relativeToWorld;
-
-	sf::FloatRect buttonRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
-	buttonRect = transform.transformRect(buttonRect);
-
 	mMouseOver = false;
-	if (buttonRect.contains(mousePosition))
+
+	if (!mDisable)
 	{
-		mMouseOver = true;
+		const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
+		const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
+		const sf::Vector2f mousePosition = relativeToWorld;
+
+		sf::FloatRect buttonRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
+		buttonRect = transform.transformRect(buttonRect);
+
+		if (buttonRect.contains(mousePosition))
+		{
+			mMouseOver = true;
+		}
 	}
 }
 

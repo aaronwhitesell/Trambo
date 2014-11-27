@@ -53,6 +53,8 @@ public:
 	virtual void			handleEvent(const trmb::Event& gameEvent) override final;
 	void					pack(Ptr button);
 	void					standardizeCharacterSize();
+	void					enable();
+	void					disable();
 
 
 private:

@@ -141,6 +141,22 @@ void TabContainer::deactivate()
 	mActivatedTab = -1;
 }
 
+void TabContainer::enable()
+{
+	for (auto tab : mTabs)
+	{
+		tab->setDisable(false);
+	}
+}
+
+void TabContainer::disable()
+{
+	for (auto tab : mTabs)
+	{
+		tab->setDisable(true);
+	}
+}
+
 void TabContainer::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();

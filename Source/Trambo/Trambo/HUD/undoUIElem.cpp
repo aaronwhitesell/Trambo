@@ -25,6 +25,7 @@ UndoUIElem::UndoUIElem(Fonts::ID font, FontHolder& fonts, SoundEffects::ID sound
 , mButtonPosition(sf::Vector2f(0.0f, 0.0f))
 , mMouseOver(false)
 , mPressed(false)
+, mDisable(false)
 , mDoState(true)
 {
 	mDoButton = std::make_shared<GameButton>(font, fonts, soundEffect, soundPlayer);
@@ -92,37 +93,41 @@ void UndoUIElem::setVisualScheme(sf::Color backgroundColor, sf::Color textColor,
 
 void UndoUIElem::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
-	const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
-	const sf::Vector2f mousePosition = relativeToWorld;
-
-	assert(("ALW - Logic Error: mButtonPosition does not match the size of mDoButton and mUndoButton!"
-		, mButtonPosition == mDoButton->getPosition() && mButtonPosition == mUndoButton->getPosition()));
-
-	sf::FloatRect buttonRect;
-	if (mDoState)
-	{
-		// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
-		assert(("ALW - Logic Error: mButtonSize does not match the size of mDoButton!", mButtonSize == mDoButton->getSize()));
-		buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
-	}
-	else
-	{
-		// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
-		assert(("ALW - Logic Error: mButtonSize does not match the size of mUndoButton!", mButtonSize == mUndoButton->getSize()));
-		buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
-	}
-
-	sf::Transform combinedTransform = getTransform() * transform;
-	buttonRect = combinedTransform.transformRect(buttonRect);
-
 	mMouseOver = false;
-	if (buttonRect.contains(mousePosition))
-	{
-		mMouseOver = true;
-	}
 
-	mContainer.handler(window, view, combinedTransform);
+	if (!mDisable)
+	{
+		const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
+		const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
+		const sf::Vector2f mousePosition = relativeToWorld;
+
+		assert(("ALW - Logic Error: mButtonPosition does not match the size of mDoButton and mUndoButton!"
+			, mButtonPosition == mDoButton->getPosition() && mButtonPosition == mUndoButton->getPosition()));
+
+		sf::FloatRect buttonRect;
+		if (mDoState)
+		{
+			// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
+			assert(("ALW - Logic Error: mButtonSize does not match the size of mDoButton!", mButtonSize == mDoButton->getSize()));
+			buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
+		}
+		else
+		{
+			// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
+			assert(("ALW - Logic Error: mButtonSize does not match the size of mUndoButton!", mButtonSize == mUndoButton->getSize()));
+			buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
+		}
+
+		sf::Transform combinedTransform = getTransform() * transform;
+		buttonRect = combinedTransform.transformRect(buttonRect);
+
+		if (buttonRect.contains(mousePosition))
+		{
+			mMouseOver = true;
+		}
+
+		mContainer.handler(window, view, combinedTransform);
+	}
 }
 
 void UndoUIElem::handleEvent(const trmb::Event& gameEvent)
@@ -149,6 +154,18 @@ void UndoUIElem::handleEvent(const trmb::Event& gameEvent)
 			}
 		}
 	}
+}
+
+void UndoUIElem::enable()
+{
+	mDisable = false;
+	mContainer.enable();
+}
+
+void UndoUIElem::disable()
+{
+	mDisable = true;
+	mContainer.disable();
 }
 
 void UndoUIElem::draw(sf::RenderTarget& target, sf::RenderStates states) const

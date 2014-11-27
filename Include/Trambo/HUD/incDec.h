@@ -49,6 +49,8 @@ public:
 								, float outLineThickness);
 
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
+	void					enable();
+	void					disable();
 
 
 private:

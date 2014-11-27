@@ -108,6 +108,22 @@ void ButtonContainer::handleEvent(const Event& gameEvent)
 	}
 }
 
+void ButtonContainer::enable()
+{
+	for (auto button : mButtons)
+	{
+		button->setDisable(false);
+	}
+}
+
+void ButtonContainer::disable()
+{
+	for (auto button : mButtons)
+	{
+		button->setDisable(true);
+	}
+}
+
 void ButtonContainer::pack(Ptr button)
 {
 	mButtons.emplace_back(button);

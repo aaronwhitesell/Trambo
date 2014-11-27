@@ -53,6 +53,8 @@ public:
 	void					pack(Ptr ptr);
 	void					standardizeCharacterSize();
 	void					deactivate();
+	void					enable();
+	void					disable();
 
 
 private:

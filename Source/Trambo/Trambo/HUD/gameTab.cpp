@@ -133,6 +133,19 @@ void GameTab::setDepressOutlineColor(const sf::Color& color)
 void GameTab::setDisable(bool flag)
 {
 	mDisable = flag;
+
+	if (mDisable)
+	{
+		mText.setColor(mDisableTextColor);
+		mBackground.setFillColor(mDisableBackgroundColor);
+		mBackground.setOutlineColor(mDisableOutlineColor);
+	}
+	else
+	{
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+	}
 }
 
 void GameTab::setDisableBackgroundColor(const sf::Color& color)
@@ -157,41 +170,51 @@ void GameTab::setCallback(Callback callback)
 
 void GameTab::activate()
 {
-	mActivated = true;
+	if (!mDisable)
+	{
+		mActivated = true;
 
-	if (mCallback)
-		mCallback();
+		if (mCallback)
+			mCallback();
 
 
-	mText.setColor(mDepressTextColor);
-	mBackground.setFillColor(mDepressBackgroundColor);
-	mBackground.setOutlineColor(mDepressOutlineColor);
+		mText.setColor(mDepressTextColor);
+		mBackground.setFillColor(mDepressBackgroundColor);
+		mBackground.setOutlineColor(mDepressOutlineColor);
 
-	mSounds.play(mSoundID);
+		mSounds.play(mSoundID);
+	}
 }
 
 void GameTab::deactivate()
 {
-	mActivated = false;
+	if (!mDisable)
+	{
+		mActivated = false;
 
-	mText.setColor(mTextColor);
-	mBackground.setFillColor(mBackgroundColor);
-	mBackground.setOutlineColor(mOutlineColor);
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+	}
 }
 
 void GameTab::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
-	const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
-	const sf::Vector2f mousePosition = relativeToWorld;
-
-	sf::FloatRect tabRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
-	tabRect = transform.transformRect(tabRect);
-
 	mMouseOver = false;
-	if (tabRect.contains(mousePosition))
+
+	if (!mDisable)
 	{
-		mMouseOver = true;
+		const sf::Vector2i relativeToWindow = sf::Mouse::getPosition(window);
+		const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
+		const sf::Vector2f mousePosition = relativeToWorld;
+
+		sf::FloatRect tabRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
+		tabRect = transform.transformRect(tabRect);
+
+		if (tabRect.contains(mousePosition))
+		{
+			mMouseOver = true;
+		}
 	}
 }
 

@@ -71,6 +71,16 @@ void IncDec::handler(const sf::RenderWindow& window, const sf::View& view, const
 	mButtons.handler(window, view, combinedTransform);
 }
 
+void IncDec::enable()
+{
+	mButtons.enable();
+}
+
+void IncDec::disable()
+{
+	mButtons.disable();
+}
+
 void IncDec::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
