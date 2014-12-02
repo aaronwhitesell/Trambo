@@ -35,6 +35,9 @@ GameButton::GameButton(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID sou
 , mMouseOver(false)
 , mSelected(false)
 , mPressed(false)
+, mRestoreBackgroundSize(sf::Vector2f(0.0f, 0.0f))
+, mRestoreCharacterSize(0)
+, mRestoreValuesInitialized(false)
 {
 	setSize(size);
 	setFont(fontID);
@@ -62,17 +65,16 @@ bool GameButton::isPressed() const
 
 sf::Vector2f GameButton::getSize() const
 {
-	return mSize;
+	return mBackground.getSize();
 }
 
-unsigned int GameButton::getCharacerSize() const
+unsigned int GameButton::getCharacterSize() const
 {
 	return mText.getCharacterSize();
 }
 
 void GameButton::setSize(sf::Vector2f size, bool resize)
 {
-	mSize = size;
 	mBackground.setSize(size);
 
 	if (resize)
@@ -262,6 +264,31 @@ void GameButton::activate()
 	}
 }
 
+void GameButton::unhide()
+{
+	if (!mRestoreValuesInitialized)
+	{
+		// ALW - unhide() may be called before hide(), so assign the restore values.
+		mRestoreBackgroundSize = mBackground.getSize();
+		mRestoreCharacterSize = mText.getCharacterSize();
+		mRestoreValuesInitialized = true;
+	}
+
+	setSize(mRestoreBackgroundSize, false);
+	setCharacterSize(mRestoreCharacterSize);
+}
+
+void GameButton::hide()
+{
+	mRestoreBackgroundSize = mBackground.getSize();
+	const sf::Vector2f hideBackground = sf::Vector2f(0.0f, 0.0f);
+	setSize(hideBackground, false);
+
+	mRestoreCharacterSize = mText.getCharacterSize();
+	const unsigned int hideText = 0;
+	setCharacterSize(hideText);
+}
+
 void GameButton::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
 	mMouseOver = false;
@@ -272,7 +299,7 @@ void GameButton::handler(const sf::RenderWindow& window, const sf::View& view, c
 		const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
 		const sf::Vector2f mousePosition = relativeToWorld;
 
-		sf::FloatRect buttonRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
+		sf::FloatRect buttonRect(getPosition().x, getPosition().y, mBackground.getSize().x, mBackground.getSize().y);
 		buttonRect = transform.transformRect(buttonRect);
 
 		if (buttonRect.contains(mousePosition))
@@ -292,7 +319,7 @@ void GameButton::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void GameButton::recenter()
 {
 	centerOrigin(mText);
-	mText.setPosition(std::floor(mSize.x / 2.0f), std::floor(mSize.y / 2.0f));
+	mText.setPosition(std::floor(mBackground.getSize().x / 2.0f), std::floor(mBackground.getSize().y / 2.0f));
 }
 
 void GameButton::resizeFont()
@@ -301,20 +328,20 @@ void GameButton::resizeFont()
 	// ALW - height is approximately the button height minus the vertical buffer.
 	const float verticalBuffer = 10.0f;
 
-	float width34 = mSize.x / 4 * 3;
-	float height10 = mSize.y - verticalBuffer;
+	float width34 = mBackground.getSize().x / 4 * 3;
+	float height10 = mBackground.getSize().y - verticalBuffer;
 	std::string str = mText.getString();
 
-	if (mSize.x > 0 && mSize.y > 0 && mText.getString() != "")
+	if (mBackground.getSize().x > 0 && mBackground.getSize().y > 0 && mText.getString() != "")
 	{
-		if (mText.getGlobalBounds().width < mSize.x / 4 * 3 && mText.getGlobalBounds().height < mSize.y - verticalBuffer)
+		if (mText.getGlobalBounds().width < mBackground.getSize().x / 4 * 3 && mText.getGlobalBounds().height < mBackground.getSize().y - verticalBuffer)
 		{
-			while (mText.getGlobalBounds().width < mSize.x / 4 * 3 && mText.getGlobalBounds().height < mSize.y - verticalBuffer)
+			while (mText.getGlobalBounds().width < mBackground.getSize().x / 4 * 3 && mText.getGlobalBounds().height < mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If both the text width and height are less than the button size then increase the character size
 				mText.setCharacterSize(mText.getCharacterSize() + 1);
 			}
-			if (mText.getGlobalBounds().width > mSize.x / 4 * 3 || mText.getGlobalBounds().height > mSize.y - verticalBuffer)
+			if (mText.getGlobalBounds().width > mBackground.getSize().x / 4 * 3 || mText.getGlobalBounds().height > mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If either the text width or height is larger than the button size then decrease the character size
 				mText.setCharacterSize(mText.getCharacterSize() - 1);
@@ -322,7 +349,7 @@ void GameButton::resizeFont()
 		}
 		else
 		{
-			while (mText.getGlobalBounds().width > mSize.x / 4 * 3 || mText.getGlobalBounds().height > mSize.y - verticalBuffer)
+			while (mText.getGlobalBounds().width > mBackground.getSize().x / 4 * 3 || mText.getGlobalBounds().height > mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If the text width or height is larger than the button size then decrease the character size
 				mText.setCharacterSize(mText.getCharacterSize() - 1);

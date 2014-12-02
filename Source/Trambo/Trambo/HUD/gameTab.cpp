@@ -31,6 +31,9 @@ GameTab::GameTab(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, 
 , mDisableOutlineColor(sf::Color(128u, 128u, 128u, 255u))
 , mMouseOver(false)
 , mActivated(false)
+, mRestoreBackgroundSize(sf::Vector2f(0.0f, 0.0f))
+, mRestoreCharacterSize(0)
+, mRestoreValuesInitialized(false)
 {
 	setSize(size);
 	setFont(fontID);
@@ -53,18 +56,17 @@ bool GameTab::isActivated() const
 
 sf::Vector2f GameTab::getSize() const
 {
-	return mSize;
+	return mBackground.getSize();
 }
 
-unsigned int GameTab::getCharacerSize() const
+unsigned int GameTab::getCharacterSize() const
 {
 	return mText.getCharacterSize();
 }
 
 void GameTab::setSize(sf::Vector2f size, bool resize)
 {
-	mSize = size;
-	mBackground.setSize(mSize);
+	mBackground.setSize(size);
 	resizeFont();
 
 	if (resize)
@@ -198,6 +200,31 @@ void GameTab::deactivate()
 	}
 }
 
+void GameTab::unhide()
+{
+	if (!mRestoreValuesInitialized)
+	{
+		// ALW - unhide() may be called before hide(), so initialize the unhide values.
+		mRestoreBackgroundSize = mBackground.getSize();
+		mRestoreCharacterSize = mText.getCharacterSize();
+		mRestoreValuesInitialized = true;
+	}
+
+	setSize(mRestoreBackgroundSize, false);
+	setCharacterSize(mRestoreCharacterSize);
+}
+
+void GameTab::hide()
+{
+	mRestoreBackgroundSize = mBackground.getSize();
+	const sf::Vector2f hideBackground = sf::Vector2f(0.0f, 0.0f);
+	setSize(hideBackground, false);
+
+	mRestoreCharacterSize = mText.getCharacterSize();
+	const unsigned int hideText = 0;
+	setCharacterSize(hideText);
+}
+
 void GameTab::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
 	mMouseOver = false;
@@ -208,7 +235,7 @@ void GameTab::handler(const sf::RenderWindow& window, const sf::View& view, cons
 		const sf::Vector2f relativeToWorld = window.mapPixelToCoords(relativeToWindow, view);
 		const sf::Vector2f mousePosition = relativeToWorld;
 
-		sf::FloatRect tabRect(getPosition().x, getPosition().y, mSize.x, mSize.y);
+		sf::FloatRect tabRect(getPosition().x, getPosition().y, mBackground.getSize().x, mBackground.getSize().y);
 		tabRect = transform.transformRect(tabRect);
 
 		if (tabRect.contains(mousePosition))
@@ -228,7 +255,7 @@ void GameTab::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void GameTab::recenter()
 {
 	centerOrigin(mText);
-	mText.setPosition(std::floor(mSize.x / 2.0f), std::floor(mSize.y / 2.0f));
+	mText.setPosition(std::floor(mBackground.getSize().x / 2.0f), std::floor(mBackground.getSize().y / 2.0f));
 }
 
 void GameTab::resizeFont()
@@ -237,20 +264,20 @@ void GameTab::resizeFont()
 	// ALW - height is approximately the tab height minus the vertical buffer.
 	const float verticalBuffer = 10.0f;
 
-	float width34 = mSize.x / 4 * 3;
-	float height10 = mSize.y - verticalBuffer;
+	float width34 = mBackground.getSize().x / 4 * 3;
+	float height10 = mBackground.getSize().y - verticalBuffer;
 	std::string str = mText.getString();
 
-	if (mSize.x > 0 && mSize.y > 0 && mText.getString() != "")
+	if (mBackground.getSize().x > 0 && mBackground.getSize().y > 0 && mText.getString() != "")
 	{
-		if (mText.getGlobalBounds().width < mSize.x / 4 * 3 && mText.getGlobalBounds().height < mSize.y - verticalBuffer)
+		if (mText.getGlobalBounds().width < mBackground.getSize().x / 4 * 3 && mText.getGlobalBounds().height < mBackground.getSize().y - verticalBuffer)
 		{
-			while (mText.getGlobalBounds().width < mSize.x / 4 * 3 && mText.getGlobalBounds().height < mSize.y - verticalBuffer)
+			while (mText.getGlobalBounds().width < mBackground.getSize().x / 4 * 3 && mText.getGlobalBounds().height < mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If both the text width and height are less than the tab size then increase the character size
 				mText.setCharacterSize(mText.getCharacterSize() + 1);
 			}
-			if (mText.getGlobalBounds().width > mSize.x / 4 * 3 || mText.getGlobalBounds().height > mSize.y - verticalBuffer)
+			if (mText.getGlobalBounds().width > mBackground.getSize().x / 4 * 3 || mText.getGlobalBounds().height > mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If either the text width or height is larger than the tab size then decrease the character size
 				mText.setCharacterSize(mText.getCharacterSize() - 1);
@@ -258,7 +285,7 @@ void GameTab::resizeFont()
 		}
 		else
 		{
-			while (mText.getGlobalBounds().width > mSize.x / 4 * 3 || mText.getGlobalBounds().height > mSize.y - verticalBuffer)
+			while (mText.getGlobalBounds().width > mBackground.getSize().x / 4 * 3 || mText.getGlobalBounds().height > mBackground.getSize().y - verticalBuffer)
 			{
 				// ALW - If the text width or height is larger than the tab size then decrease the character size
 				mText.setCharacterSize(mText.getCharacterSize() - 1);

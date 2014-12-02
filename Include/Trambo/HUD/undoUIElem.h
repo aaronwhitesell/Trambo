@@ -61,6 +61,8 @@ public:
 	virtual void		handleEvent(const trmb::Event& gameEvent) override final;
 	void				enable();
 	void				disable();
+	void				unhide();
+	void				hide();
 
 
 private:
@@ -89,8 +91,8 @@ private:
 
 	bool				mMouseOver;
 	bool				mPressed;
-	bool				mDisable;
 	bool				mDoState;
+	bool				mDisable;
 };
 
 void	centerOrigin(UndoUIElem& uiElem, bool centerXAxis = true, bool centerYAxis = true);

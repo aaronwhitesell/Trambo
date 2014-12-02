@@ -25,8 +25,8 @@ UndoUIElem::UndoUIElem(Fonts::ID font, FontHolder& fonts, SoundEffects::ID sound
 , mButtonPosition(sf::Vector2f(0.0f, 0.0f))
 , mMouseOver(false)
 , mPressed(false)
-, mDisable(false)
 , mDoState(true)
+, mDisable(false)
 {
 	mDoButton = std::make_shared<GameButton>(font, fonts, soundEffect, soundPlayer);
 	mDoButton->setSize(mButtonSize);
@@ -107,13 +107,11 @@ void UndoUIElem::handler(const sf::RenderWindow& window, const sf::View& view, c
 		sf::FloatRect buttonRect;
 		if (mDoState)
 		{
-			// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
 			assert(("ALW - Logic Error: mButtonSize does not match the size of mDoButton!", mButtonSize == mDoButton->getSize()));
 			buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
 		}
 		else
 		{
-			// ALW - The user could call GameButton::setSize directly and circumvent UndoUIElem's interface.
 			assert(("ALW - Logic Error: mButtonSize does not match the size of mUndoButton!", mButtonSize == mUndoButton->getSize()));
 			buttonRect = sf::FloatRect(mButtonPosition.x, mButtonPosition.y, mButtonSize.x, mButtonSize.y);
 		}
@@ -132,25 +130,28 @@ void UndoUIElem::handler(const sf::RenderWindow& window, const sf::View& view, c
 
 void UndoUIElem::handleEvent(const trmb::Event& gameEvent)
 {
-	// ALW - ButtonContainer still manages all event handling for its buttons. However, UndoUIElem needs to know when
-	// ALW - the UI elem was clicked, so it can hide the appropriate button (by resizing it).
-	if (mLeftClickPress == gameEvent.getType())
+	if (!mDisable)
 	{
-		if (mMouseOver)
+		// ALW - ButtonContainer still manages all event handling for its buttons. However, UndoUIElem needs to know when
+		// ALW - the UI elem was clicked, so it can hide the appropriate button (by resizing it).
+		if (mLeftClickPress == gameEvent.getType())
 		{
-			// ALW - It's not important which button was pressed, but just that a button was pressed.
-			mPressed = true;
-		}
-	}
-	else if (mLeftClickRelease == gameEvent.getType())
-	{
-		if (mPressed)
-		{
-			mPressed = false;
-
 			if (mMouseOver)
 			{
-				setState(!mDoState);
+				// ALW - It's not important which button was pressed, but just that a button was pressed.
+				mPressed = true;
+			}
+		}
+		else if (mLeftClickRelease == gameEvent.getType())
+		{
+			if (mPressed)
+			{
+				mPressed = false;
+
+				if (mMouseOver)
+				{
+					setState(!mDoState);
+				}
 			}
 		}
 	}
@@ -166,6 +167,20 @@ void UndoUIElem::disable()
 {
 	mDisable = true;
 	mContainer.disable();
+}
+
+void UndoUIElem::unhide()
+{
+	// ALW - Show both buttons, so unhide() can properly initialize the restore values.
+	showButtons();
+	mContainer.unhide();
+}
+
+void UndoUIElem::hide()
+{
+	// ALW - Show both buttons, so hide() can properly assign the restore values.
+	showButtons();
+	mContainer.hide();
 }
 
 void UndoUIElem::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -184,10 +199,10 @@ void UndoUIElem::standardizeCharacterSize()
 void UndoUIElem::showButtons()
 {
 	// ALW - Set text and size for both buttons
-	mDoButton->setSize(mButtonSize);
-	mDoButton->setText(mDoText);
-	mUndoButton->setSize(mButtonSize);
-	mUndoButton->setText(mUndoText);
+	mDoButton->setSize(mButtonSize, false);
+	mDoButton->setText(mDoText, false);
+	mUndoButton->setSize(mButtonSize, false);
+	mUndoButton->setText(mUndoText, false);
 }
 
 void UndoUIElem::restoreButtons()

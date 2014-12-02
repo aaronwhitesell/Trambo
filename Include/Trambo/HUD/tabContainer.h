@@ -55,7 +55,8 @@ public:
 	void					deactivate();
 	void					enable();
 	void					disable();
-
+	void					unhide();
+	void					hide();
 
 private:
 	using Vector = std::vector<Ptr>;
@@ -72,6 +73,7 @@ private:
 	Vector					mTabs;
 	Rects					mRects;
 	int						mActivatedTab;
+	bool					mDisable;
 };
 
 } // namespace trmb

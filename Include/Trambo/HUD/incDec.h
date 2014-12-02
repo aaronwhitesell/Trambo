@@ -51,6 +51,8 @@ public:
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
 	void					enable();
 	void					disable();
+	void					unhide();
+	void					hide();
 
 
 private:
@@ -66,6 +68,7 @@ private:
 	float					mHorizontalBuffer;
 	ButtonPtr				mIncrementButton;
 	ButtonPtr				mDecrementButton;
+	bool					mDisable;
 };
 
 void	centerOrigin(IncDec& ui, bool centerXAxis = true, bool centerYAxis = true);

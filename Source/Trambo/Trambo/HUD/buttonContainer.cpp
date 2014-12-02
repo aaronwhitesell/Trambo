@@ -19,6 +19,7 @@ ButtonContainer::ButtonContainer(EventGuid leftClickPress, EventGuid leftClickRe
 : mLeftClickPress(leftClickPress)
 , mLeftClickRelease(leftClickRelease)
 , mSelectedButton(-1)
+, mDisable(false)
 {
 }
 
@@ -73,36 +74,42 @@ void ButtonContainer::setVisualScheme(sf::Color backgroundColor, sf::Color textC
 
 void ButtonContainer::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	// ALW - This should occur on a mouse moved event. Otherwise, the position of the mouse is checked every frame!
-	sf::Transform combinedTransform = getTransform() * transform;
-
-	for (auto button : mButtons)
+	if (!mDisable)
 	{
-		button->handler(window, view, combinedTransform);
-	}
+		// ALW - This should occur on a mouse moved event. Otherwise, the position of the mouse is checked every frame!
+		sf::Transform combinedTransform = getTransform() * transform;
 
-	selectionHandler();
+		for (auto button : mButtons)
+		{
+			button->handler(window, view, combinedTransform);
+		}
+
+		selectionHandler();
+	}
 }
 
 void ButtonContainer::handleEvent(const Event& gameEvent)
 {
-	if (mLeftClickPress == gameEvent.getType())
+	if (!mDisable)
 	{
-		if (hasSelection())
+		if (mLeftClickPress == gameEvent.getType())
 		{
-			if (mButtons.at(mSelectedButton)->isMouseOver())
+			if (hasSelection())
 			{
-				mButtons.at(mSelectedButton)->press();
+				if (mButtons.at(mSelectedButton)->isMouseOver())
+				{
+					mButtons.at(mSelectedButton)->press();
+				}
 			}
 		}
-	}
-	else if (mLeftClickRelease == gameEvent.getType())
-	{
-		if (hasSelection() && mButtons.at(mSelectedButton)->isPressed())
+		else if (mLeftClickRelease == gameEvent.getType())
 		{
-			if (mButtons.at(mSelectedButton)->isMouseOver())
+			if (hasSelection() && mButtons.at(mSelectedButton)->isPressed())
 			{
-				mButtons.at(mSelectedButton)->activate();
+				if (mButtons.at(mSelectedButton)->isMouseOver())
+				{
+					mButtons.at(mSelectedButton)->activate();
+				}
 			}
 		}
 	}
@@ -110,6 +117,7 @@ void ButtonContainer::handleEvent(const Event& gameEvent)
 
 void ButtonContainer::enable()
 {
+	mDisable = false;
 	for (auto button : mButtons)
 	{
 		button->setDisable(false);
@@ -118,9 +126,26 @@ void ButtonContainer::enable()
 
 void ButtonContainer::disable()
 {
+	mDisable = true;
 	for (auto button : mButtons)
 	{
 		button->setDisable(true);
+	}
+}
+
+void ButtonContainer::unhide()
+{
+	for (auto button : mButtons)
+	{
+		button->unhide();
+	}
+}
+
+void ButtonContainer::hide()
+{
+	for (auto button : mButtons)
+	{
+		button->hide();
 	}
 }
 
@@ -135,13 +160,13 @@ void ButtonContainer::standardizeCharacterSize()
 	std::vector<Ptr>::const_iterator iter = begin(mButtons);
 	if (iter != end(mButtons))
 	{
-		unsigned int min = (*iter)->getCharacerSize();
+		unsigned int min = (*iter)->getCharacterSize();
 		++iter;
 
 		for (; iter != end(mButtons); ++iter)
 		{
 			// ALW - Find the smallest character size
-			min = std::min(min, (*iter)->getCharacerSize());
+			min = std::min(min, (*iter)->getCharacterSize());
 		}
 
 		for (auto button : mButtons)

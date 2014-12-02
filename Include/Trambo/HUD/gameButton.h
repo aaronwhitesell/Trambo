@@ -54,7 +54,7 @@ public:
 	bool					isPressed() const;
 
 	sf::Vector2f			getSize() const;
-	unsigned int			getCharacerSize() const;
+	unsigned int			getCharacterSize() const;
 
 	void					setSize(sf::Vector2f size, bool resize = true);
 	void					setText(std::string string, bool resize = true);
@@ -88,6 +88,9 @@ public:
 	void					cancelPress();
 	void					activate();
 
+	void					unhide();
+	void					hide();
+
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
 
 
@@ -101,7 +104,6 @@ private:
 	FontHolder&				mFonts;
 	SoundEffects::ID		mSoundID;
 	SoundPlayer&			mSounds;
-	sf::Vector2f			mSize;
 
 	sf::RectangleShape		mBackground;
 	sf::Text				mText;
@@ -128,6 +130,10 @@ private:
 	bool					mMouseOver;
 	bool					mSelected;
 	bool					mPressed;
+
+	sf::Vector2f			mRestoreBackgroundSize;
+	unsigned int			mRestoreCharacterSize;
+	bool					mRestoreValuesInitialized;
 };
 
 } // namespace trmb

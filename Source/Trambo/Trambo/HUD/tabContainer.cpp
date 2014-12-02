@@ -18,6 +18,7 @@ namespace trmb
 TabContainer::TabContainer(EventGuid leftClickPress)
 : mLeftClickPress(leftClickPress)
 , mActivatedTab(-1)
+, mDisable(false)
 {
 }
 
@@ -67,35 +68,75 @@ void TabContainer::setVisualScheme(sf::Color backgroundColor, sf::Color textColo
 
 void TabContainer::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	// ALW - This should occur on a left-click press event. Otherwise, the position of the mouse is checked every frame!
-	// ALW - In addition to this the combined transform cannot be calculated in the ctor, because the object is unitialized
-	// ALW - so the transform is unknown. Therefore, the handler function is used to pass in the parent transform.
-	// ALW - Idealy, the transform would be passed directly to the handleEvent() method, but this is not possible.
-
-	sf::Transform combinedTransform = getTransform() * transform;
-
-	for (auto tab : mTabs)
+	if (!mDisable)
 	{
-		tab->handler(window, view, combinedTransform);
+		// ALW - This should occur on a left-click press event. Otherwise, the position of the mouse is checked every frame!
+		// ALW - In addition to this the combined transform cannot be calculated in the ctor, because the object is unitialized
+		// ALW - so the transform is unknown. Therefore, the handler function is used to pass in the parent transform.
+		// ALW - Idealy, the transform would be passed directly to the handleEvent() method, but this is not possible.
+
+		sf::Transform combinedTransform = getTransform() * transform;
+
+		for (auto tab : mTabs)
+		{
+			tab->handler(window, view, combinedTransform);
+		}
 	}
 }
 
 void TabContainer::handleEvent(const Event& gameEvent)
 {
-	if (mLeftClickPress == gameEvent.getType())
+	if (!mDisable)
 	{
-		std::size_t index = 0;
-
-		for (auto tab : mTabs)
+		if (mLeftClickPress == gameEvent.getType())
 		{
-			if (tab->isMouseOver())
-			{
-				activate(index);
-				break;
-			}
+			std::size_t index = 0;
 
-			++index;
+			for (auto tab : mTabs)
+			{
+				if (tab->isMouseOver())
+				{
+					activate(index);
+					break;
+				}
+
+				++index;
+			}
 		}
+	}
+}
+
+void TabContainer::enable()
+{
+	mDisable = false;
+	for (auto tab : mTabs)
+	{
+		tab->setDisable(false);
+	}
+}
+
+void TabContainer::disable()
+{
+	mDisable = true;
+	for (auto tab : mTabs)
+	{
+		tab->setDisable(true);
+	}
+}
+
+void TabContainer::unhide()
+{
+	for (auto tab : mTabs)
+	{
+		tab->unhide();
+	}
+}
+
+void TabContainer::hide()
+{
+	for (auto tab : mTabs)
+	{
+		tab->hide();
 	}
 }
 
@@ -110,13 +151,13 @@ void TabContainer::standardizeCharacterSize()
 	std::vector<Ptr>::const_iterator iter = begin(mTabs);
 	if (iter != end(mTabs))
 	{
-		unsigned int min = (*iter)->getCharacerSize();
+		unsigned int min = (*iter)->getCharacterSize();
 		++iter;
 
 		for (; iter != end(mTabs); ++iter)
 		{
 			// ALW - Find the smallest character size
-			min = std::min(min, (*iter)->getCharacerSize());
+			min = std::min(min, (*iter)->getCharacterSize());
 		}
 
 		for (auto tab : mTabs)
@@ -139,22 +180,6 @@ void TabContainer::deactivate()
 	}
 
 	mActivatedTab = -1;
-}
-
-void TabContainer::enable()
-{
-	for (auto tab : mTabs)
-	{
-		tab->setDisable(false);
-	}
-}
-
-void TabContainer::disable()
-{
-	for (auto tab : mTabs)
-	{
-		tab->setDisable(true);
-	}
 }
 
 void TabContainer::draw(sf::RenderTarget& target, sf::RenderStates states) const

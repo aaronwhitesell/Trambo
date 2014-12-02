@@ -55,6 +55,8 @@ public:
 	void					standardizeCharacterSize();
 	void					enable();
 	void					disable();
+	void					unhide();
+	void					hide();
 
 
 private:
@@ -75,6 +77,7 @@ private:
 	Vector					mButtons;
 	Rects					mRects;
 	int						mSelectedButton;
+	bool					mDisable;
 };
 
 } // namespace trmb

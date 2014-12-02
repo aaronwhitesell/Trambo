@@ -18,6 +18,7 @@ IncDec::IncDec(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, So
 	, EventGuid leftClickPress, EventGuid leftClickRelease, sf::Vector2f size)
 : mButtons(leftClickPress, leftClickRelease)
 , mHorizontalBuffer(1.0f)
+, mDisable(false)
 {
 	mIncrementButton = std::make_shared<GameButton>(fontID, fonts, soundID, sounds, size);
 	mIncrementButton->setPosition(0.0f, 0.0f);
@@ -66,19 +67,34 @@ void IncDec::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf:
 
 void IncDec::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
-	sf::Transform combinedTransform = getTransform() * transform;
+	if (!mDisable)
+	{
+		sf::Transform combinedTransform = getTransform() * transform;
 
-	mButtons.handler(window, view, combinedTransform);
+		mButtons.handler(window, view, combinedTransform);
+	}
 }
 
 void IncDec::enable()
 {
+	mDisable = false;
 	mButtons.enable();
 }
 
 void IncDec::disable()
 {
+	mDisable = true;
 	mButtons.disable();
+}
+
+void IncDec::unhide()
+{
+	mButtons.unhide();
+}
+
+void IncDec::hide()
+{
+	mButtons.hide();
 }
 
 void IncDec::draw(sf::RenderTarget& target, sf::RenderStates states) const
