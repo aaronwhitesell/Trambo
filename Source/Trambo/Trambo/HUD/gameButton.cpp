@@ -37,7 +37,6 @@ GameButton::GameButton(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID sou
 , mPressed(false)
 , mRestoreBackgroundSize(sf::Vector2f(0.0f, 0.0f))
 , mRestoreCharacterSize(0)
-, mRestoreValuesInitialized(false)
 {
 	setSize(size);
 	setFont(fontID);
@@ -95,10 +94,12 @@ void GameButton::setFont(Fonts::ID fontID)
 	resizeFont();
 }
 
-void GameButton::setCharacterSize(unsigned int characterSize)
+void GameButton::setCharacterSize(unsigned int characterSize, bool recenter)
 {
 	mText.setCharacterSize(characterSize);
-	recenter();
+
+	if (recenter)
+		recenterText();
 }
 
 void GameButton::setOutlineThickness(float thickness)
@@ -266,27 +267,20 @@ void GameButton::activate()
 
 void GameButton::unhide()
 {
-	if (!mRestoreValuesInitialized)
-	{
-		// ALW - unhide() may be called before hide(), so assign the restore values.
-		mRestoreBackgroundSize = mBackground.getSize();
-		mRestoreCharacterSize = mText.getCharacterSize();
-		mRestoreValuesInitialized = true;
-	}
-
 	setSize(mRestoreBackgroundSize, false);
-	setCharacterSize(mRestoreCharacterSize);
+	setCharacterSize(mRestoreCharacterSize, false);
 }
 
 void GameButton::hide()
 {
+	// ALW - hide() must be called before unhide(), so the restore values are assigned.
 	mRestoreBackgroundSize = mBackground.getSize();
 	const sf::Vector2f hideBackground = sf::Vector2f(0.0f, 0.0f);
 	setSize(hideBackground, false);
 
 	mRestoreCharacterSize = mText.getCharacterSize();
 	const unsigned int hideText = 0;
-	setCharacterSize(hideText);
+	setCharacterSize(hideText, false);
 }
 
 void GameButton::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
@@ -316,7 +310,7 @@ void GameButton::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(mText, states);
 }
 
-void GameButton::recenter()
+void GameButton::recenterText()
 {
 	centerOrigin(mText);
 	mText.setPosition(std::floor(mBackground.getSize().x / 2.0f), std::floor(mBackground.getSize().y / 2.0f));
@@ -356,7 +350,7 @@ void GameButton::resizeFont()
 			}
 		}
 
-		recenter();
+		recenterText();
 	}
 }
 

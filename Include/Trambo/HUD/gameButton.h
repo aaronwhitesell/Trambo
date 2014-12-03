@@ -59,7 +59,7 @@ public:
 	void					setSize(sf::Vector2f size, bool resize = true);
 	void					setText(std::string string, bool resize = true);
 	void					setFont(Fonts::ID fontID);
-	void					setCharacterSize(unsigned int CharacterSize);
+	void					setCharacterSize(unsigned int CharacterSize, bool recenter = true);
 
 	void					setOutlineThickness(float thickness);
 
@@ -96,7 +96,7 @@ public:
 
 private:
 	virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const override final;
-	void					recenter();
+	void					recenterText();
 	void					resizeFont();
 
 
@@ -133,7 +133,6 @@ private:
 
 	sf::Vector2f			mRestoreBackgroundSize;
 	unsigned int			mRestoreCharacterSize;
-	bool					mRestoreValuesInitialized;
 };
 
 } // namespace trmb

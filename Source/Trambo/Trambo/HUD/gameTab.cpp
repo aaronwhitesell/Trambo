@@ -33,7 +33,6 @@ GameTab::GameTab(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, 
 , mActivated(false)
 , mRestoreBackgroundSize(sf::Vector2f(0.0f, 0.0f))
 , mRestoreCharacterSize(0)
-, mRestoreValuesInitialized(false)
 {
 	setSize(size);
 	setFont(fontID);
@@ -88,10 +87,12 @@ void GameTab::setFont(Fonts::ID fontID)
 	resizeFont();
 }
 
-void GameTab::setCharacterSize(unsigned int characterSize)
+void GameTab::setCharacterSize(unsigned int characterSize, bool recenter)
 {
 	mText.setCharacterSize(characterSize);
-	recenter();
+
+	if (recenter)
+		recenterText();
 }
 
 void GameTab::setOutlineThickness(float thickness)
@@ -202,27 +203,20 @@ void GameTab::deactivate()
 
 void GameTab::unhide()
 {
-	if (!mRestoreValuesInitialized)
-	{
-		// ALW - unhide() may be called before hide(), so initialize the unhide values.
-		mRestoreBackgroundSize = mBackground.getSize();
-		mRestoreCharacterSize = mText.getCharacterSize();
-		mRestoreValuesInitialized = true;
-	}
-
 	setSize(mRestoreBackgroundSize, false);
-	setCharacterSize(mRestoreCharacterSize);
+	setCharacterSize(mRestoreCharacterSize, false);
 }
 
 void GameTab::hide()
 {
+	// ALW - hide() must be called before unhide(), so the restore values are assigned.
 	mRestoreBackgroundSize = mBackground.getSize();
 	const sf::Vector2f hideBackground = sf::Vector2f(0.0f, 0.0f);
 	setSize(hideBackground, false);
 
 	mRestoreCharacterSize = mText.getCharacterSize();
 	const unsigned int hideText = 0;
-	setCharacterSize(hideText);
+	setCharacterSize(hideText, false);
 }
 
 void GameTab::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
@@ -252,7 +246,7 @@ void GameTab::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(mText, states);
 }
 
-void GameTab::recenter()
+void GameTab::recenterText()
 {
 	centerOrigin(mText);
 	mText.setPosition(std::floor(mBackground.getSize().x / 2.0f), std::floor(mBackground.getSize().y / 2.0f));
@@ -292,7 +286,7 @@ void GameTab::resizeFont()
 			}
 		}
 
-		recenter();
+		recenterText();
 	}
 }
 

@@ -171,8 +171,6 @@ void UndoUIElem::disable()
 
 void UndoUIElem::unhide()
 {
-	// ALW - Show both buttons, so unhide() can properly initialize the restore values.
-	showButtons();
 	mContainer.unhide();
 }
 
