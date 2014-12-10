@@ -17,6 +17,7 @@
     <ClCompile Include="Events\event.cpp" />
     <ClCompile Include="Events\eventDispatcher.cpp" />
     <ClCompile Include="Events\eventHandler.cpp" />
+    <ClCompile Include="Events\eventStr.cpp" />
     <ClCompile Include="GUI\button.cpp" />
     <ClCompile Include="GUI\component.cpp" />
     <ClCompile Include="GUI\container.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="..\..\..\Include\Trambo\Events\event.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h" />
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventHandler.h" />
+    <ClInclude Include="..\..\..\Include\Trambo\Events\eventStr.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\button.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\component.h" />
     <ClInclude Include="..\..\..\Include\Trambo\GUI\container.h" />

@@ -221,6 +221,9 @@
     <ClCompile Include="HUD\undoUIElem.cpp">
       <Filter>Source Files\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Events\eventStr.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Trambo\Events\eventDispatcher.h">
@@ -333,6 +336,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Trambo\HUD\undoUIElem.h">
       <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Trambo\Events\eventStr.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
