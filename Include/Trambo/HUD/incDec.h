@@ -47,8 +47,11 @@ public:
 								, sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor
 								, sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor
 								, float outLineThickness);
+	void					setDisableIncrementButton(bool flag);
+	void					setDisableDecrementButton(bool flag);
 
 	void					handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
+
 	void					enable();
 	void					disable();
 	void					unhide();

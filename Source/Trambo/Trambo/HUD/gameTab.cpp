@@ -139,6 +139,9 @@ void GameTab::setDisable(bool flag)
 
 	if (mDisable)
 	{
+		mMouseOver = false;
+		mActivated = false;
+
 		mText.setColor(mDisableTextColor);
 		mBackground.setFillColor(mDisableBackgroundColor);
 		mBackground.setOutlineColor(mDisableOutlineColor);
@@ -177,15 +180,14 @@ void GameTab::activate()
 	{
 		mActivated = true;
 
-		if (mCallback)
-			mCallback();
-
-
 		mText.setColor(mDepressTextColor);
 		mBackground.setFillColor(mDepressBackgroundColor);
 		mBackground.setOutlineColor(mDepressOutlineColor);
 
 		mSounds.play(mSoundID);
+
+		if (mCallback)
+			mCallback();
 	}
 }
 

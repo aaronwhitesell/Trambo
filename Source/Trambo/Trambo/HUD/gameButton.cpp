@@ -161,6 +161,10 @@ void GameButton::setDisable(bool flag)
 
 	if (mDisable)
 	{
+		mMouseOver = false;
+		mSelected = false;
+		mPressed = false;
+
 		mText.setColor(mDisableTextColor);
 		mBackground.setFillColor(mDisableBackgroundColor);
 		mBackground.setOutlineColor(mDisableOutlineColor);
@@ -245,9 +249,6 @@ void GameButton::activate()
 	{
 		mPressed = false;
 
-		if (mCallback)
-			mCallback();
-
 		if (isSelected())
 		{
 			mText.setColor(mHoverTextColor);
@@ -262,6 +263,9 @@ void GameButton::activate()
 		}
 
 		mSounds.play(mSoundID);
+
+		if (mCallback)
+			mCallback();
 	}
 }
 

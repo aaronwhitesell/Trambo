@@ -65,6 +65,16 @@ void IncDec::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf:
 		, outLineThickness);
 }
 
+void IncDec::setDisableIncrementButton(bool flag)
+{
+	mIncrementButton->setDisable(flag);
+}
+
+void IncDec::setDisableDecrementButton(bool flag)
+{
+	mDecrementButton->setDisable(flag);
+}
+
 void IncDec::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
 {
 	if (!mDisable)
