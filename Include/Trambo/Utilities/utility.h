@@ -5,6 +5,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/System/Vector2.hpp>
 
+#include <iomanip>
 #include <sstream>
 #include <string>
 
@@ -25,6 +26,15 @@ class Animation;
 // Convert enumerators to strings
 std::string		toString(sf::Keyboard::Key key);
 std::string		toString(sf::Mouse::Button key);
+
+// ALW - Same effect as std::to_string, but with precision control.
+template <typename T>
+std::string toStringWithPrecision(const T a_value, const int n)
+{
+	std::ostringstream out;
+	out << std::setprecision(n) << a_value;
+	return out.str();
+}
 
 // Call setOrigin() with the center of the object
 void			centerOrigin(sf::Sprite& sprite, bool centerXAxis = true, bool centerYAxis = true);
