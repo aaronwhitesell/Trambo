@@ -95,6 +95,26 @@ void GameTab::setCharacterSize(unsigned int characterSize, bool recenter)
 		recenterText();
 }
 
+void GameTab::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor
+	, sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor
+	, sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor
+	, float outLineThickness)
+{
+	setBackgroundColor(backgroundColor);
+	setTextColor(textColor);
+	setOutlineColor(outlineColor);
+
+	setDepressBackgroundColor(depressBackgroundColor);
+	setDepressTextColor(depressTextColor);
+	setDepressOutlineColor(depressOutlineColor);
+
+	setDisableBackgroundColor(disableBackgroundColor);
+	setDisableTextColor(disableTextColor);
+	setDisableOutlineColor(disableOutlineColor);
+
+	setOutlineThickness(outLineThickness);
+}
+
 void GameTab::setOutlineThickness(float thickness)
 {
 	mBackground.setOutlineThickness(thickness);

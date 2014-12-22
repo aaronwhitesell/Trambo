@@ -61,6 +61,12 @@ public:
 	void					setFont(Fonts::ID fontID);
 	void					setCharacterSize(unsigned int CharacterSize, bool recenter = true);
 
+	void					setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor
+								, sf::Color hoverBackgroundColor, sf::Color hoverTextColor, sf::Color hoverOutlineColor
+								, sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor
+								, sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor
+								, float outLineThickness);
+
 	void					setOutlineThickness(float thickness);
 
 	void					setBackgroundColor(const sf::Color& color);

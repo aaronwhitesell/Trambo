@@ -102,6 +102,31 @@ void GameButton::setCharacterSize(unsigned int characterSize, bool recenter)
 		recenterText();
 }
 
+void GameButton::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf::Color outlineColor
+	, sf::Color hoverBackgroundColor, sf::Color hoverTextColor, sf::Color hoverOutlineColor
+	, sf::Color depressBackgroundColor, sf::Color depressTextColor, sf::Color depressOutlineColor
+	, sf::Color disableBackgroundColor, sf::Color disableTextColor, sf::Color disableOutlineColor
+	, float outLineThickness)
+{
+	setBackgroundColor(backgroundColor);
+	setTextColor(textColor);
+	setOutlineColor(outlineColor);
+
+	setHoverBackgroundColor(hoverBackgroundColor);
+	setHoverTextColor(hoverTextColor);
+	setHoverOutlineColor(hoverOutlineColor);
+
+	setDepressBackgroundColor(depressBackgroundColor);
+	setDepressTextColor(depressTextColor);
+	setDepressOutlineColor(depressOutlineColor);
+
+	setDisableBackgroundColor(disableBackgroundColor);
+	setDisableTextColor(disableTextColor);
+	setDisableOutlineColor(disableOutlineColor);
+
+	setOutlineThickness(outLineThickness);
+}
+
 void GameButton::setOutlineThickness(float thickness)
 {
 	mBackground.setOutlineThickness(thickness);

@@ -52,23 +52,11 @@ void ButtonContainer::setVisualScheme(sf::Color backgroundColor, sf::Color textC
 {
 	for (auto button : mButtons)
 	{
-		button->setBackgroundColor(backgroundColor);
-		button->setTextColor(textColor);
-		button->setOutlineColor(outlineColor);
-
-		button->setHoverBackgroundColor(hoverBackgroundColor);
-		button->setHoverTextColor(hoverTextColor);
-		button->setHoverOutlineColor(hoverOutlineColor);
-
-		button->setDepressBackgroundColor(depressBackgroundColor);
-		button->setDepressTextColor(depressTextColor);
-		button->setDepressOutlineColor(depressOutlineColor);
-
-		button->setDisableBackgroundColor(disableBackgroundColor);
-		button->setDisableTextColor(disableTextColor);
-		button->setDisableOutlineColor(disableOutlineColor);
-
-		button->setOutlineThickness(outLineThickness);
+		button->setVisualScheme(backgroundColor, textColor, outlineColor
+			, hoverBackgroundColor, hoverTextColor, hoverOutlineColor
+			, depressBackgroundColor, depressTextColor, depressOutlineColor
+			, disableBackgroundColor, disableTextColor, disableOutlineColor
+			, outLineThickness);
 	}
 }
 
