@@ -60,7 +60,7 @@ public:
 	void				handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform);
 	virtual void		handleEvent(const trmb::Event& gameEvent) override final;
 	void				enable();
-	void				disable();
+	void				disable(bool useDisableColorScheme);
 	void				unhide();
 	void				hide();
 

@@ -153,27 +153,6 @@ void GameTab::setDepressOutlineColor(const sf::Color& color)
 	mDisableOutlineColor = color;
 }
 
-void GameTab::setDisable(bool flag)
-{
-	mDisable = flag;
-
-	if (mDisable)
-	{
-		mMouseOver = false;
-		mActivated = false;
-
-		mText.setColor(mDisableTextColor);
-		mBackground.setFillColor(mDisableBackgroundColor);
-		mBackground.setOutlineColor(mDisableOutlineColor);
-	}
-	else
-	{
-		mText.setColor(mTextColor);
-		mBackground.setFillColor(mBackgroundColor);
-		mBackground.setOutlineColor(mOutlineColor);
-	}
-}
-
 void GameTab::setDisableBackgroundColor(const sf::Color& color)
 {
 	mDisableBackgroundColor = color;
@@ -217,6 +196,35 @@ void GameTab::deactivate()
 	{
 		mActivated = false;
 
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+	}
+}
+
+void GameTab::enable()
+{
+	mDisable = false;
+
+	mText.setColor(mTextColor);
+	mBackground.setFillColor(mBackgroundColor);
+	mBackground.setOutlineColor(mOutlineColor);
+}
+
+void GameTab::disable(bool useDisableColorScheme)
+{
+	mDisable = true;
+	mMouseOver = false;
+	mActivated = false;
+
+	if (useDisableColorScheme)
+	{
+		mText.setColor(mDisableTextColor);
+		mBackground.setFillColor(mDisableBackgroundColor);
+		mBackground.setOutlineColor(mDisableOutlineColor);
+	}
+	else
+	{
 		mText.setColor(mTextColor);
 		mBackground.setFillColor(mBackgroundColor);
 		mBackground.setOutlineColor(mOutlineColor);

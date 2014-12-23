@@ -81,7 +81,6 @@ public:
 	void					setDepressTextColor(const sf::Color& color);
 	void					setDepressOutlineColor(const sf::Color& color);
 
-	void					setDisable(bool flag);
 	void					setDisableBackgroundColor(const sf::Color& color);
 	void					setDisableTextColor(const sf::Color& color);
 	void					setDisableOutlineColor(const sf::Color& color);
@@ -94,6 +93,8 @@ public:
 	void					cancelPress();
 	void					activate();
 
+	void					enable();
+	void					disable(bool useDisableColorScheme);
 	void					unhide();
 	void					hide();
 

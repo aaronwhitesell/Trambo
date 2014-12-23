@@ -180,28 +180,6 @@ void GameButton::setDepressOutlineColor(const sf::Color& color)
 	mDisableOutlineColor = color;
 }
 
-void GameButton::setDisable(bool flag)
-{
-	mDisable = flag;
-
-	if (mDisable)
-	{
-		mMouseOver = false;
-		mSelected = false;
-		mPressed = false;
-
-		mText.setColor(mDisableTextColor);
-		mBackground.setFillColor(mDisableBackgroundColor);
-		mBackground.setOutlineColor(mDisableOutlineColor);
-	}
-	else
-	{
-		mText.setColor(mTextColor);
-		mBackground.setFillColor(mBackgroundColor);
-		mBackground.setOutlineColor(mOutlineColor);
-	}
-}
-
 void GameButton::setDisableBackgroundColor(const sf::Color& color)
 {
 	mDisableBackgroundColor = color;
@@ -291,6 +269,36 @@ void GameButton::activate()
 
 		if (mCallback)
 			mCallback();
+	}
+}
+
+void GameButton::enable()
+{
+	mDisable = false;
+
+	mText.setColor(mTextColor);
+	mBackground.setFillColor(mBackgroundColor);
+	mBackground.setOutlineColor(mOutlineColor);
+}
+
+void GameButton::disable(bool useDisableColorScheme)
+{
+	mDisable = true;
+	mMouseOver = false;
+	mSelected = false;
+	mPressed = false;
+
+	if (useDisableColorScheme)
+	{
+		mText.setColor(mDisableTextColor);
+		mBackground.setFillColor(mDisableBackgroundColor);
+		mBackground.setOutlineColor(mDisableOutlineColor);
+	}
+	else
+	{
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
 	}
 }
 

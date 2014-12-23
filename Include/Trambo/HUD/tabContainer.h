@@ -54,7 +54,7 @@ public:
 	void					standardizeCharacterSize();
 	void					deactivate();
 	void					enable();
-	void					disable();
+	void					disable(bool useDisableColorScheme);
 	void					unhide();
 	void					hide();
 

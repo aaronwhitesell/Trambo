@@ -108,16 +108,16 @@ void ButtonContainer::enable()
 	mDisable = false;
 	for (auto button : mButtons)
 	{
-		button->setDisable(false);
+		button->enable();
 	}
 }
 
-void ButtonContainer::disable()
+void ButtonContainer::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
 	for (auto button : mButtons)
 	{
-		button->setDisable(true);
+		button->disable(useDisableColorScheme);
 	}
 }
 

@@ -65,14 +65,20 @@ void IncDec::setVisualScheme(sf::Color backgroundColor, sf::Color textColor, sf:
 		, outLineThickness);
 }
 
-void IncDec::setDisableIncrementButton(bool flag)
+void IncDec::setDisableIncrementButton(bool flag, bool useDisableColorScheme)
 {
-	mIncrementButton->setDisable(flag);
+	if (flag)
+		mIncrementButton->disable(useDisableColorScheme);
+	else
+		mIncrementButton->enable();
 }
 
-void IncDec::setDisableDecrementButton(bool flag)
+void IncDec::setDisableDecrementButton(bool flag, bool useDisableColorScheme)
 {
-	mDecrementButton->setDisable(flag);
+	if (flag)
+		mDecrementButton->disable(useDisableColorScheme);
+	else
+		mDecrementButton->enable();
 }
 
 void IncDec::handler(const sf::RenderWindow& window, const sf::View& view, const sf::Transform& transform)
@@ -91,10 +97,10 @@ void IncDec::enable()
 	mButtons.enable();
 }
 
-void IncDec::disable()
+void IncDec::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
-	mButtons.disable();
+	mButtons.disable(useDisableColorScheme);
 }
 
 void IncDec::unhide()

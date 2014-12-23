@@ -54,7 +54,7 @@ public:
 	void					pack(Ptr button);
 	void					standardizeCharacterSize();
 	void					enable();
-	void					disable();
+	void					disable(bool useDisableColorScheme);
 	void					unhide();
 	void					hide();
 

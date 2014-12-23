@@ -163,10 +163,10 @@ void UndoUIElem::enable()
 	mContainer.enable();
 }
 
-void UndoUIElem::disable()
+void UndoUIElem::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
-	mContainer.disable();
+	mContainer.disable(useDisableColorScheme);
 }
 
 void UndoUIElem::unhide()

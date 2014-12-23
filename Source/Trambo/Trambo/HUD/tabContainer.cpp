@@ -111,16 +111,16 @@ void TabContainer::enable()
 	mDisable = false;
 	for (auto tab : mTabs)
 	{
-		tab->setDisable(false);
+		tab->enable();
 	}
 }
 
-void TabContainer::disable()
+void TabContainer::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
 	for (auto tab : mTabs)
 	{
-		tab->setDisable(true);
+		tab->disable(useDisableColorScheme);
 	}
 }
 
