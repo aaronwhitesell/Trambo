@@ -29,6 +29,7 @@ GameButton::GameButton(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID sou
 , mDepressTextColor(sf::Color(255u, 255u, 255u, 255u))
 , mDepressOutlineColor(sf::Color(0u, 0u, 0u, 255u))
 , mDisable(false)
+, mDisableColorSchemeActive(false)
 , mDisableBackgroundColor(sf::Color(160u, 160u, 160u, 255u))
 , mDisableTextColor(sf::Color(224u, 224u, 224u, 255u))
 , mDisableOutlineColor(sf::Color(128u, 128u, 128u, 255u))
@@ -60,6 +61,11 @@ bool GameButton::isSelected() const
 bool GameButton::isPressed() const
 {
 	return mPressed;
+}
+
+bool GameButton::isDisabled() const
+{
+	return mDisable;
 }
 
 sf::Vector2f GameButton::getSize() const
@@ -276,9 +282,14 @@ void GameButton::enable()
 {
 	mDisable = false;
 
-	mText.setColor(mTextColor);
-	mBackground.setFillColor(mBackgroundColor);
-	mBackground.setOutlineColor(mOutlineColor);
+	if (mDisableColorSchemeActive)
+	{
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+
+		mDisableColorSchemeActive = false;
+	}
 }
 
 void GameButton::disable(bool useDisableColorScheme)
@@ -293,12 +304,8 @@ void GameButton::disable(bool useDisableColorScheme)
 		mText.setColor(mDisableTextColor);
 		mBackground.setFillColor(mDisableBackgroundColor);
 		mBackground.setOutlineColor(mDisableOutlineColor);
-	}
-	else
-	{
-		mText.setColor(mTextColor);
-		mBackground.setFillColor(mBackgroundColor);
-		mBackground.setOutlineColor(mOutlineColor);
+
+		mDisableColorSchemeActive = true;
 	}
 }
 

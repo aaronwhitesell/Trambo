@@ -52,6 +52,7 @@ public:
 	bool					isMouseOver() const;
 	bool					isSelected() const;
 	bool					isPressed() const;
+	bool                    isDisabled() const;
 
 	sf::Vector2f			getSize() const;
 	unsigned int			getCharacterSize() const;
@@ -128,6 +129,7 @@ private:
 	sf::Color				mDepressOutlineColor;
 
 	bool					mDisable;
+	bool					mDisableColorSchemeActive;
 	sf::Color				mDisableBackgroundColor;
 	sf::Color				mDisableTextColor;
 	sf::Color				mDisableOutlineColor;

@@ -19,6 +19,8 @@ IncDec::IncDec(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, So
 : mButtons(leftClickPress, leftClickRelease)
 , mHorizontalBuffer(1.0f)
 , mDisable(false)
+, mIsPreviousStateIncrementButtonEnabled(true)
+, mIsPreviousStateDecrementButtonEnabled(true)
 {
 	mIncrementButton = std::make_shared<GameButton>(fontID, fonts, soundID, sounds, size);
 	mIncrementButton->setPosition(0.0f, 0.0f);
@@ -94,13 +96,45 @@ void IncDec::handler(const sf::RenderWindow& window, const sf::View& view, const
 void IncDec::enable()
 {
 	mDisable = false;
-	mButtons.enable();
+
+	if (mIsPreviousStateIncrementButtonEnabled)
+	{
+		setDisableIncrementButton(false, false);
+		mIsPreviousStateIncrementButtonEnabled = true;
+	}
+
+	if (mIsPreviousStateDecrementButtonEnabled)
+	{
+		setDisableDecrementButton(false, false);
+		mIsPreviousStateDecrementButtonEnabled = true;
+	}
 }
 
 void IncDec::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
-	mButtons.disable(useDisableColorScheme);
+
+	if (mIncrementButton->isDisabled())
+	{
+		// ALW - Already disabled.
+		mIsPreviousStateIncrementButtonEnabled = false;
+	}
+	else
+	{
+		mIsPreviousStateIncrementButtonEnabled = true;
+		setDisableIncrementButton(true, useDisableColorScheme);
+	}
+
+	if (mDecrementButton->isDisabled())
+	{
+		// ALW - Already disabled.
+		mIsPreviousStateDecrementButtonEnabled = false;
+	}
+	else
+	{
+		mIsPreviousStateDecrementButtonEnabled = true;
+		setDisableDecrementButton(true, useDisableColorScheme);
+	}
 }
 
 void IncDec::unhide()

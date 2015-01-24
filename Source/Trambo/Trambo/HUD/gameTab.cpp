@@ -26,6 +26,7 @@ GameTab::GameTab(Fonts::ID fontID, FontHolder& fonts, SoundEffects::ID soundID, 
 , mDepressTextColor(sf::Color(255u, 255u, 255u, 255u))
 , mDepressOutlineColor(sf::Color(0u, 0u, 0u, 255u))
 , mDisable(false)
+, mDisableColorSchemeActive(false)
 , mDisableBackgroundColor(sf::Color(160u, 160u, 160u, 255u))
 , mDisableTextColor(sf::Color(224u, 224u, 224u, 255u))
 , mDisableOutlineColor(sf::Color(128u, 128u, 128u, 255u))
@@ -206,28 +207,28 @@ void GameTab::enable()
 {
 	mDisable = false;
 
-	mText.setColor(mTextColor);
-	mBackground.setFillColor(mBackgroundColor);
-	mBackground.setOutlineColor(mOutlineColor);
+	if (mDisableColorSchemeActive)
+	{
+		mText.setColor(mTextColor);
+		mBackground.setFillColor(mBackgroundColor);
+		mBackground.setOutlineColor(mOutlineColor);
+
+		mDisableColorSchemeActive = false;
+	}
 }
 
 void GameTab::disable(bool useDisableColorScheme)
 {
 	mDisable = true;
 	mMouseOver = false;
-	mActivated = false;
 
 	if (useDisableColorScheme)
 	{
 		mText.setColor(mDisableTextColor);
 		mBackground.setFillColor(mDisableBackgroundColor);
 		mBackground.setOutlineColor(mDisableOutlineColor);
-	}
-	else
-	{
-		mText.setColor(mTextColor);
-		mBackground.setFillColor(mBackgroundColor);
-		mBackground.setOutlineColor(mOutlineColor);
+
+		mDisableColorSchemeActive = true;
 	}
 }
 

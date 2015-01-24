@@ -59,7 +59,7 @@ public:
 
 
 private:
-	using ButtonPtr = ButtonContainer::Ptr;
+	using ButtonPtr = std::shared_ptr<GameButton>;
 
 
 private:
@@ -72,6 +72,8 @@ private:
 	ButtonPtr				mIncrementButton;
 	ButtonPtr				mDecrementButton;
 	bool					mDisable;
+	bool                    mIsPreviousStateIncrementButtonEnabled;
+	bool                    mIsPreviousStateDecrementButtonEnabled;
 };
 
 void	centerOrigin(IncDec& ui, bool centerXAxis = true, bool centerYAxis = true);

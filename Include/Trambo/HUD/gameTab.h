@@ -115,6 +115,7 @@ private:
 	sf::Color				mDepressOutlineColor;
 
 	bool					mDisable;
+	bool                    mDisableColorSchemeActive;
 	sf::Color				mDisableBackgroundColor;
 	sf::Color				mDisableTextColor;
 	sf::Color				mDisableOutlineColor;
