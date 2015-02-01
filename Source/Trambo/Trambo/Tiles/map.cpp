@@ -17,6 +17,26 @@ Map::Map(const std::string& filename)
 	loadTilesetTextures();
 }
 
+int Map::getWidth() const
+{
+	return mWidth;
+}
+
+int Map::getHeight() const
+{
+	return mHeight;
+}
+
+int Map::getTileWidth() const
+{
+	return mTileWidth;
+}
+
+int Map::getTileHeight() const
+{
+	return mTileHeight;
+}
+
 void Map::read(const std::string& filename)
 {
 	tinyxml2::XMLDocument config;

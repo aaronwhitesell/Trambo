@@ -26,6 +26,10 @@ public:
 							Map(const Map &) = delete;
 	Map &					operator=(const Map &) = delete;
 
+	int						getWidth() const;
+	int						getHeight() const;
+	int						getTileWidth() const;
+	int						getTileHeight() const;
 	void					read(const std::string& filename);
 
 
