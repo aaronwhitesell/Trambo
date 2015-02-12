@@ -63,21 +63,36 @@ sf::Transform SceneNode::getWorldTransform() const
 	return transform;
 }
 
-void SceneNode::checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &collisionPairs)
+void SceneNode::checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &collisionPairs, bool preserveOrder)
 {
-	checkNodeCollision(sceneGraph, collisionPairs);
+	checkNodeCollision(sceneGraph, collisionPairs, preserveOrder);
 
 	for (Ptr &child : sceneGraph.mChildren)
-		checkSceneCollision(*child, collisionPairs);
+		checkSceneCollision(*child, collisionPairs, preserveOrder);
 }
 
-void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPairs)
+void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPairs, bool preserveOrder)
 {
 	if (this != &node && collision(*this, node) && !isDestroyed() && !node.isDestroyed())
-		collisionPairs.insert(std::minmax(this, &node));
+	{
+		if (preserveOrder)
+		{
+			// ALW - This is useful when one unique layer is compared against another unique layer.
+			// ALW - The benefit is that when layer 1 is compared against layer 2 the pairs will
+			// ALW - always be in the same order (layer 1, layer 2).
+			collisionPairs.insert(Pair(this, &node));
+		}
+		else
+		{
+			// ALW - This is useful when a scenegraph compares itself. There will be duplicate collisions,
+			// ALW - but in reverse order. By using std::minmax all pairs will be of the same order and
+			// ALW - duplicates will not be inserted (elements of a set are unique).
+			collisionPairs.insert(std::minmax(this, &node));
+		}
+	}
 
 	for (Ptr &child : mChildren)
-		child->checkNodeCollision(node, collisionPairs);
+		child->checkNodeCollision(node, collisionPairs, preserveOrder);
 }
 
 sf::FloatRect SceneNode::getBoundingRect() const

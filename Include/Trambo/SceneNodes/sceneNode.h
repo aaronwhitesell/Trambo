@@ -41,8 +41,8 @@ public:
 	sf::Vector2f			getWorldPosition() const;
 	sf::Transform			getWorldTransform() const;
 
-	void					checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &collisionPairs);
-	void					checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPairs);
+	void					checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &collisionPairs, bool preserveOrder = false);
+	void					checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPairs, bool preserveOrder = false);
 	void					removeWrecks();
 	virtual sf::FloatRect	getBoundingRect() const;
 	virtual bool			isMarkedForRemoval() const;
