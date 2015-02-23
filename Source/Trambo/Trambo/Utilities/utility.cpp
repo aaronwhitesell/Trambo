@@ -16,15 +16,8 @@
 
 namespace
 {
-
-std::default_random_engine createRandomEngine()
-{
-	auto seed = static_cast<unsigned long>(std::time(nullptr));
-	return std::default_random_engine(seed);
-}
-
-auto RandomEngine = createRandomEngine();
-
+	std::random_device	randomDevice;				// ALW - Obtain random number from hardware
+	std::mt19937		generator(randomDevice());	// ALW - Seed the generator
 } // anonymous namespace
 
 namespace trmb
@@ -235,7 +228,7 @@ float toRadian(float degree)
 int randomInt(int exclusiveMax)
 {
 	std::uniform_int_distribution<> distr(0, exclusiveMax - 1);
-	return distr(RandomEngine);
+	return distr(generator);
 }
 
 float length(sf::Vector2f vector)
