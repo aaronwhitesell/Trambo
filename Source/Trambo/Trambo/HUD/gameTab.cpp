@@ -67,7 +67,6 @@ unsigned int GameTab::getCharacterSize() const
 void GameTab::setSize(sf::Vector2f size, bool resize)
 {
 	mBackground.setSize(size);
-	resizeFont();
 
 	if (resize)
 		resizeFont();
@@ -76,7 +75,6 @@ void GameTab::setSize(sf::Vector2f size, bool resize)
 void GameTab::setText(std::string string, bool resize)
 {
 	mText.setString(string);
-	resizeFont();
 
 	if (resize)
 		resizeFont();
