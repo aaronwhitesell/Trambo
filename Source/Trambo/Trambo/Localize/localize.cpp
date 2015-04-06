@@ -15,6 +15,11 @@ Localize& Localize::getInstance()
 	return mInstance;
 }
 
+std::string Localize::getLanguage() const
+{
+	return mLanguage;
+}
+
 std::string Localize::getString(const std::string& name) const
 {
 	tinyxml2::XMLDocument config;

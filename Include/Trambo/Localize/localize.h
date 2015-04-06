@@ -16,6 +16,7 @@ public:
 	Localize&			operator=(const Localize&) = delete;	// disallow assignment operator
 
 	static Localize&	getInstance();
+	std::string			getLanguage() const;
 	std::string		    getString(const std::string& name) const;
 
 	void				setFilePath(const std::string& filePath);
