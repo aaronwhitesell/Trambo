@@ -2,6 +2,7 @@
 #define TRAMBO_MUSIC_PLAYER_H
 
 #include <SFML/Audio/Music.hpp>
+#include <SFML/Audio/SoundSource.hpp>
 #include <SFML/System/NonCopyable.hpp>
 
 #include <map>
@@ -24,6 +25,8 @@ public:
 
 	void						play(Music::ID theme);
 	void						stop();
+
+	sf::SoundSource::Status		getStatus();
 
 	void						setPaused(bool paused);
 	void						setVolume(float volume);

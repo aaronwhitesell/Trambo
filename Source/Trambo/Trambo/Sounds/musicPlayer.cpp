@@ -35,6 +35,11 @@ void MusicPlayer::stop()
 	mMusic.stop();
 }
 
+sf::SoundSource::Status MusicPlayer::getStatus()
+{
+	return mMusic.getStatus();
+}
+
 void MusicPlayer::setVolume(float volume)
 {
 	mVolume = volume;
